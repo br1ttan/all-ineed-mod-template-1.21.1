@@ -1,0 +1,32 @@
+{
+  "anvil_cost": 2,
+  "description": {
+    "translate": "enchantment.all-ineed-mod.celerity"
+  },
+  "effects": {
+    "minecraft:tick": [
+      {
+        "effect": {
+          "type": "all-ineed-mod:celerity"
+        }
+      }
+    ]
+  },
+  "max_cost": {
+    "base": 35,
+    "per_level_above_first": 0
+  },
+  "max_level": 2,
+  "min_cost": {
+    "base": 15,
+    "per_level_above_first": 0
+  },
+  "slots": [
+    "head",
+    "chest",
+    "legs",
+    "feet"
+  ],
+  "supported_items": "#minecraft:enchantable/armor",
+  "weight": 10
+}
