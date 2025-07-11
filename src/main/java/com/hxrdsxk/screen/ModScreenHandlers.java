@@ -17,7 +17,4 @@ public class ModScreenHandlers {
                     new ExtendedScreenHandlerType<>(MagicBlockScreenHandler::new, BlockPos.PACKET_CODEC)
             );
 
-    public static void registerScreenHandlers() {
-        AllINeedMod.LOGGER.info("Registering Screen Handlers for " + AllINeedMod.MOD_ID);
-    }
 }

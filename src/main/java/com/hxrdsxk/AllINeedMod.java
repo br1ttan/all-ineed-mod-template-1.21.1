@@ -1,5 +1,6 @@
 package com.hxrdsxk;
 
+import com.hxrdsxk.block.ModBlockEntities;
 import com.hxrdsxk.block.ModBlocks;
 import com.hxrdsxk.components.ModComponents;
 import com.hxrdsxk.enchantment.ModEnchantmentEffect;
@@ -24,7 +25,6 @@ public class AllINeedMod implements ModInitializer {
 		ModItems.registerModItems();
 		ModBlocks.registerModBlocks();
 
-		ModScreenHandlers.registerScreenHandlers();
 		ModEnchantmentEffect.registerEnchantmentEffects();
 	}
 }

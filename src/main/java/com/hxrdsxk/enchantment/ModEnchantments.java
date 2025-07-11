@@ -1,19 +1,14 @@
 package com.hxrdsxk.enchantment;
 
-import com.hxrdsxk.enchantment.custom.BoomEnchantmentEffect;
-import com.hxrdsxk.enchantment.custom.CelerityEnchantmentEffect;
-import com.hxrdsxk.enchantment.custom.EnlightenedEnchantmentEffect;
-import com.hxrdsxk.enchantment.custom.LightningStrikerEnchantmentEffect;
+import com.hxrdsxk.enchantment.custom.*;
 import net.minecraft.component.EnchantmentEffectComponentTypes;
 import net.minecraft.component.type.AttributeModifierSlot;
 import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.effect.EnchantmentEffectEntry;
 import net.minecraft.enchantment.effect.EnchantmentEffectTarget;
 import net.minecraft.registry.*;
 import net.minecraft.registry.tag.EnchantmentTags;
 import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.util.Identifier;
-import net.minecraft.block.entity.EnchantingTableBlockEntity;
 
 import static com.hxrdsxk.AllINeedMod.MOD_ID;
 
@@ -29,6 +24,9 @@ public class ModEnchantments {
 
     public static final RegistryKey<Enchantment> CELERITY =
             RegistryKey.of(RegistryKeys.ENCHANTMENT, Identifier.of(MOD_ID, "celerity"));
+
+    public static final RegistryKey<Enchantment> WIND_BOOST =
+            RegistryKey.of(RegistryKeys.ENCHANTMENT, Identifier.of(MOD_ID, "wind_boost"));
 
 
     public static void bootstrap(Registerable<Enchantment> registerable) {
@@ -99,6 +97,24 @@ public class ModEnchantments {
                 .addEffect(
                         EnchantmentEffectComponentTypes.TICK,
                         new CelerityEnchantmentEffect()
+                ));
+
+
+        register(registerable, WIND_BOOST, Enchantment.builder(Enchantment.definition(
+                        items.getOrThrow(ItemTags.SWORD_ENCHANTABLE),
+                        5, // вес
+                        3, // макс уровень
+                        Enchantment.leveledCost(5, 7),
+                        Enchantment.leveledCost(25, 9),
+                        2,
+                        AttributeModifierSlot.MAINHAND
+                ))
+                .exclusiveSet(enchantments.getOrThrow(EnchantmentTags.DAMAGE_EXCLUSIVE_SET))
+                .addEffect(
+                        EnchantmentEffectComponentTypes.POST_ATTACK,
+                        EnchantmentEffectTarget.ATTACKER,
+                        EnchantmentEffectTarget.VICTIM,
+                        new WindBoostEnchantmentEffect()
                 ));
 
     }

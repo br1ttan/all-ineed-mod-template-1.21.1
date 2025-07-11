@@ -1,10 +1,7 @@
 package com.hxrdsxk.enchantment;
 
 import com.hxrdsxk.AllINeedMod;
-import com.hxrdsxk.enchantment.custom.BoomEnchantmentEffect;
-import com.hxrdsxk.enchantment.custom.CelerityEnchantmentEffect;
-import com.hxrdsxk.enchantment.custom.EnlightenedEnchantmentEffect;
-import com.hxrdsxk.enchantment.custom.LightningStrikerEnchantmentEffect;
+import com.hxrdsxk.enchantment.custom.*;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.enchantment.effect.EnchantmentEntityEffect;
 import net.minecraft.registry.Registries;
@@ -22,6 +19,8 @@ public class ModEnchantmentEffect {
     private static MapCodec<? extends EnchantmentEntityEffect> ENLIGHTENED = registerEntityEffect("enlightened", EnlightenedEnchantmentEffect.CODEC);
 
     private static MapCodec<? extends EnchantmentEntityEffect> CELERITY = registerEntityEffect("celerity", CelerityEnchantmentEffect.CODEC);
+
+    private static MapCodec<? extends EnchantmentEntityEffect> WIND_BOOST = registerEntityEffect("wind_boost", WindBoostEnchantmentEffect.CODEC);
 
 
     private static MapCodec<? extends EnchantmentEntityEffect> registerEntityEffect(
