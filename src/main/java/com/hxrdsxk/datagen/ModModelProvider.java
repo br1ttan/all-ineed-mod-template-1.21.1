@@ -6,6 +6,7 @@ import com.hxrdsxk.item.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.minecraft.data.client.*;
+import net.minecraft.item.ArmorItem;
 import net.minecraft.util.Identifier;
 
 public class ModModelProvider extends FabricModelProvider {
@@ -33,6 +34,11 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.PINK_GARNET, Models.GENERATED);
         itemModelGenerator.register(ModItems.RAW_PINK_GARNET, Models.GENERATED);
         itemModelGenerator.register(ModItems.CHISEL, Models.GENERATED);
+
+        itemModelGenerator.registerArmor(((ArmorItem) ModItems.PINK_NETHERITE_HELMET));
+        itemModelGenerator.registerArmor(((ArmorItem) ModItems.PINK_NETHERITE_CHESTPLATE));
+        itemModelGenerator.registerArmor(((ArmorItem) ModItems.PINK_NETHERITE_LEGGINGS));
+        itemModelGenerator.registerArmor(((ArmorItem) ModItems.PINK_NETHERITE_BOOTS));
 
     }
 }

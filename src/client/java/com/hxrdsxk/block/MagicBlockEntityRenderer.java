@@ -92,6 +92,8 @@ public class MagicBlockEntityRenderer implements BlockEntityRenderer<MagicBlockE
 
         // Рендер предмета
         ItemStack item = entity.getItems().get(1);
+
+        System.out.println(item);
         if (!item.isEmpty()) {
             ItemRenderer itemRenderer = MinecraftClient.getInstance().getItemRenderer();
             matrices.push();

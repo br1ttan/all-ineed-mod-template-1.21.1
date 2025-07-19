@@ -3,6 +3,7 @@ package com.hxrdsxk.item.custom;
 import com.hxrdsxk.block.ModBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.entity.EntityPose;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.EntityAttributes;

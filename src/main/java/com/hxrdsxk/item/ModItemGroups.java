@@ -21,6 +21,11 @@ public class ModItemGroups {
                         entries.add(ModItems.RAW_PINK_GARNET);
 
                         entries.add(ModItems.CHISEL);
+
+                        entries.add(ModItems.PINK_NETHERITE_HELMET);
+                        entries.add(ModItems.PINK_NETHERITE_CHESTPLATE);
+                        entries.add(ModItems.PINK_NETHERITE_LEGGINGS);
+                        entries.add(ModItems.PINK_NETHERITE_BOOTS);
                     }))
                     .build());
 

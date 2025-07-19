@@ -4,8 +4,13 @@ import com.hxrdsxk.block.entity.MagicBlockEntity;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.component.DataComponentTypes;
+import net.minecraft.component.type.ItemEnchantmentsComponent;
+import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.*;
+import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
@@ -19,10 +24,13 @@ import net.minecraft.util.BlockRotation;
 import net.minecraft.util.ItemScatterer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
+
+import java.util.Map;
 
 public class MagicBlock extends BlockWithEntity {
     public static final MapCodec<MagicBlock> CODEC = createCodec(MagicBlock::new);
@@ -141,6 +149,7 @@ public class MagicBlock extends BlockWithEntity {
             if (hasItem) {
                 ItemStack removedItem = magicBlockEntity.getItems().get(1);
                 magicBlockEntity.getItems().set(1, ItemStack.EMPTY);
+
                 magicBlockEntity.sync();
 
                 if (!player.getInventory().insertStack(removedItem)) {
@@ -169,10 +178,36 @@ public class MagicBlock extends BlockWithEntity {
     }
 
     @Override
-    public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, net.minecraft.util.math.random.Random random) {
-        // Когда сработает запланированный тик — ставим CLICKED = true
+    public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
+        BlockEntity be = world.getBlockEntity(pos);
+        if (!(be instanceof MagicBlockEntity magicBlockEntity)) return;
+
+        ItemStack bookStack = magicBlockEntity.getItems().get(0);
+        ItemStack itemStack = magicBlockEntity.getItems().get(1);
+
+        if (bookStack.isEmpty() || itemStack.isEmpty()) return;
+
+        // Считываем чары из книги
+        var bookEnchantments = bookStack.getOrDefault(DataComponentTypes.STORED_ENCHANTMENTS, ItemEnchantmentsComponent.DEFAULT);
+
+        // Копируем предмет и накладываем чары
+        ItemStack enchanted = itemStack.copy();
+        EnchantmentHelper.set(enchanted, bookEnchantments);
+
+        // Заменяем предмет в слоте 1 на зачарованный
+        magicBlockEntity.getItems().set(1, enchanted);
+        // Очищаем книгу
+        magicBlockEntity.getItems().set(0, ItemStack.EMPTY);
+
+        System.out.println(magicBlockEntity.getItems() + " ha ha");
+        magicBlockEntity.sync(); // обязательно синхронизировать
+
+        // Визуальный и звуковой отклик
         world.setBlockState(pos, state.with(CLICKED, true), Block.NOTIFY_ALL);
+        world.playSound(null, pos, SoundEvents.BLOCK_ENCHANTMENT_TABLE_USE, SoundCategory.BLOCKS, 1f, 1f);
     }
+
+
 
     @Override
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {

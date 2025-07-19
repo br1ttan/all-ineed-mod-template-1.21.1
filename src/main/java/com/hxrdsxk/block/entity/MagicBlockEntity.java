@@ -43,6 +43,7 @@ public class MagicBlockEntity extends BlockEntity implements ImplementedInventor
 
     public void sync() {
         if (world != null && !world.isClient) {
+            System.out.println("synced");
             world.markDirty(pos);
             markDirty();
             world.updateListeners(pos, getCachedState(), getCachedState(), 3);
@@ -104,14 +105,21 @@ public class MagicBlockEntity extends BlockEntity implements ImplementedInventor
         nbt.putFloat("OpenProgress", openProgress);
         nbt.putFloat("PageFlip", pageFlip);
         nbt.putFloat("PageFlipPrev", pageFlipPrev);
+
+        System.out.println("writing: " + inventory); // <- это выведет текущее состояние инвентаря на сервере
     }
+
 
     @Override
     protected void readNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
         super.readNbt(nbt, registryLookup);
+
         Inventories.readNbt(nbt, inventory, registryLookup);
         openProgress = nbt.getFloat("OpenProgress");
         pageFlip = nbt.getFloat("PageFlip");
         pageFlipPrev = nbt.getFloat("PageFlipPrev");
+
+        System.out.println("reading: " + inventory); // <- это клиент читает
     }
+
 }

@@ -6,6 +6,8 @@ import net.minecraft.enchantment.EnchantmentEffectContext;
 import net.minecraft.enchantment.effect.EnchantmentEntityEffect;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.hit.EntityHitResult;
@@ -25,20 +27,29 @@ public record WindBoostEnchantmentEffect() implements EnchantmentEntityEffect {
 
         if (!(attacker instanceof LivingEntity livingAttacker)) return;
 
+        LivingEntity me = livingAttacker.getAttacker();
+
+        if (me == null) return;
+
         LivingEntity target = livingAttacker.getAttacker().getAttacking();
 
-        if (target == null) return;
+        int duration = 60;
 
-        float chance = Helpers.getRandomChanceByLevel(world, level);
-//        if (world.random.nextFloat() > chance) return;
+        // Используем эффект Slowness с высоким уровнем, чтобы цель не могла двигаться
+        target.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, duration, 10));
+
+        // Добавим Mining Fatigue, чтобы цель не могла бить
+        target.addStatusEffect(new StatusEffectInstance(StatusEffects.MINING_FATIGUE, duration, 10));
+
+
 
         // Сила подкидывания зависит от уровня
         double upwardVelocity = 1.0 + (0.5 * level); // например, на 1 уровне ~1.5 блока, на 3 уровне ~2.5
 
-        Vec3d currentVelocity = target.getVelocity();
-        target.setVelocity(currentVelocity.x, upwardVelocity, currentVelocity.z);
+        Vec3d currentVelocity = me.getVelocity();
+        me.setVelocity(currentVelocity.x, upwardVelocity, currentVelocity.z);
 //
-        target.velocityModified = true; // нужно, чтобы скорость применилась на клиенте
+        me.velocityModified = true; // нужно, чтобы скорость применилась на клиенте
 
         for (int i = 0; i < 10 + level * 5; i++) {
             double offsetX = (world.random.nextDouble() - 0.5) * 0.5;
@@ -47,9 +58,9 @@ public record WindBoostEnchantmentEffect() implements EnchantmentEntityEffect {
 
             world.spawnParticles(
                     ParticleTypes.EXPLOSION,
-                    target.getX() + offsetX,
-                    target.getY() + offsetY,
-                    target.getZ() + offsetZ,
+                    me.getX() + offsetX,
+                    me.getY() + offsetY,
+                    me.getZ() + offsetZ,
                     1,
                     0, 0, 0, 0
             );
@@ -58,13 +69,12 @@ public record WindBoostEnchantmentEffect() implements EnchantmentEntityEffect {
         // 🌬️ Звук ветра
         world.playSound(
                 null,
-                target.getBlockPos(),
+                me.getBlockPos(),
                 net.minecraft.sound.SoundEvents.ENTITY_PHANTOM_FLAP, // Можно заменить на свой
                 net.minecraft.sound.SoundCategory.PLAYERS,
                 1.0f,
                 1.0f
         );
-        // Можно сразу дать урон падения при посадке — Minecraft сам посчитает урон, когда сущность упадёт
     }
 
     @Override

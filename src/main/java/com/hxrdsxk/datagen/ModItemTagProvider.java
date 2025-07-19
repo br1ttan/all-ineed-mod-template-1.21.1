@@ -7,6 +7,7 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.item.Items;
 import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.registry.tag.ItemTags;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -22,5 +23,11 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(Items.COAL)
                 .add(Items.STICK)
                 .add(Items.APPLE);
+
+        getOrCreateTagBuilder(ItemTags.TRIMMABLE_ARMOR)
+                .add(ModItems.PINK_NETHERITE_HELMET)
+                .add(ModItems.PINK_NETHERITE_LEGGINGS)
+                .add(ModItems.PINK_NETHERITE_CHESTPLATE)
+                .add(ModItems.PINK_NETHERITE_BOOTS);
     }
 }
