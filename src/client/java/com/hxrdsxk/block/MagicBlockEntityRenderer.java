@@ -34,6 +34,7 @@ public class MagicBlockEntityRenderer implements BlockEntityRenderer<MagicBlockE
                        VertexConsumerProvider vertexConsumers, int light, int overlay) {
 
         BlockState blockState = entity.getCachedState();
+
         if (!blockState.get(MagicBlock.BOOK)) {
             return;
         }

@@ -43,8 +43,6 @@ public class MagicBlockEntity extends BlockEntity implements ImplementedInventor
 
     public void sync() {
         if (world != null && !world.isClient) {
-            System.out.println("synced");
-            world.markDirty(pos);
             markDirty();
             world.updateListeners(pos, getCachedState(), getCachedState(), 3);
         }

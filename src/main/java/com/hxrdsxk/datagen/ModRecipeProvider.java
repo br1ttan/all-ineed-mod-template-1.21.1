@@ -5,10 +5,12 @@ import com.hxrdsxk.block.ModBlocks;
 import com.hxrdsxk.item.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
+import net.minecraft.block.Blocks;
 import net.minecraft.data.server.recipe.RecipeExporter;
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
 import net.minecraft.data.server.recipe.ShapelessRecipeJsonBuilder;
 import net.minecraft.item.ItemConvertible;
+import net.minecraft.item.Items;
 import net.minecraft.recipe.Recipe;
 import net.minecraft.recipe.ShapelessRecipe;
 import net.minecraft.recipe.book.RecipeCategory;
@@ -76,6 +78,18 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .input(ModBlocks.MAGIC_BLOCK)
                 .criterion(hasItem(ModBlocks.MAGIC_BLOCK), conditionsFromItem(ModBlocks.MAGIC_BLOCK))
                 .offerTo(exporter, Identifier.of(AllINeedMod.MOD_ID, "raw_pink_garnet_from_magic_block"));
+
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, ModBlocks.MAGIC_BLOCK)
+                .pattern("BBB")
+                .pattern("AGA")
+                .pattern("GGG")
+                .input('B', Blocks.POLISHED_DEEPSLATE) // предположительно чёрный блок
+                .input('A', Items.ECHO_SHARD)        // аметист (или твой аналог кристалла)
+                .input('G', Items.CRYING_OBSIDIAN)
+                .criterion(hasItem(ModItems.PINK_GARNET), conditionsFromItem(ModItems.PINK_GARNET))
+                .offerTo(exporter);
+
 
     }
 }

@@ -1,4 +1,4 @@
-// 1.21.1	2025-07-18T15:32:41.4839199	All INeed Mod/Model Definitions
+// 1.21.1	2025-07-19T21:09:13.1436122	All INeed Mod/Model Definitions
 7c65def40f6ff200de9c87e6c7975510fb31c903 assets\all-ineed-mod\models\block\pink_garnet_block.json
 ee3c3f121218fd0a2d2474af14b1f49e62bb1d6d assets\all-ineed-mod\blockstates\pink_garnet_ore.json
 8046308e2d91187963b6c2f1cd08388fb06ce5b9 assets\all-ineed-mod\models\block\pink_garnet_lamp.json
@@ -36,6 +36,7 @@ c25c6d016c4bd9dbe1ac15dde482f81e2a9d601a assets\all-ineed-mod\models\item\pink_n
 ec323ee81747375d1586c07483d99bb94c1f87ab assets\all-ineed-mod\models\item\pink_netherite_leggings.json
 09fc17ff0d6fd29847e10ef1aa816818775db421 assets\all-ineed-mod\models\item\pink_netherite_boots_lapis_trim.json
 40a653e692c42e580e03fe04ed1c8c8e91e2da27 assets\all-ineed-mod\blockstates\raw_pink_garnet_block.json
+c634312c6a3be1c215e472fb340080402955e31f assets\all-ineed-mod\models\item\pink_garnet_sword.json
 a6bcafedbe3a5d5a0b48c86e2789db753c59bf64 assets\all-ineed-mod\models\item\pink_garnet_deepslate_ore.json
 781069b666df9dfdf8f8c8509b828b3182704e70 assets\all-ineed-mod\models\item\pink_netherite_leggings_diamond_trim.json
 11d0b56d4bb65a3585800cb8c62554dabaee258b assets\all-ineed-mod\models\item\pink_netherite_chestplate_diamond_trim.json

@@ -8,7 +8,7 @@
       {
         "affected": "victim",
         "effect": {
-          "type": "all-ineed-mod:celerity"
+          "type": "all-ineed-mod:enlightened"
         },
         "enchanted": "attacker"
       }
@@ -27,5 +27,5 @@
     "mainhand"
   ],
   "supported_items": "#minecraft:enchantable/armor",
-  "weight": 10
+  "weight": 500
 }

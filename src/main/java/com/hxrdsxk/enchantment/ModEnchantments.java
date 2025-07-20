@@ -37,7 +37,7 @@ public class ModEnchantments {
         register(registerable, LIGHTNING_STRIKER, Enchantment.builder(Enchantment.definition(
                         items.getOrThrow(ItemTags.WEAPON_ENCHANTABLE),
                         items.getOrThrow(ItemTags.SWORD_ENCHANTABLE),
-                        5,
+                        500,
                         2,
                         Enchantment.leveledCost(5, 7),
                         Enchantment.leveledCost(25, 9),
@@ -53,7 +53,7 @@ public class ModEnchantments {
 
         register(registerable, BOOM, Enchantment.builder(Enchantment.definition(
                                 items.getOrThrow(ItemTags.PICKAXES),  // применимо к киркам
-                                5,                   // вес
+                                500,                   // вес
                                 3,                   // макс уровень
                                 Enchantment.leveledCost(15, 20),
                                 Enchantment.leveledCost(35, 25),
@@ -68,7 +68,7 @@ public class ModEnchantments {
 
         register(registerable, ENLIGHTENED, Enchantment.builder(Enchantment.definition(
                         items.getOrThrow(ItemTags.ARMOR_ENCHANTABLE),   // применимо к книгам
-                        10,                                // вес
+                        500,                                // вес
                         1,                                 // максимальный уровень
                         Enchantment.leveledCost(15, 0),
                         Enchantment.leveledCost(35, 0),
@@ -84,7 +84,7 @@ public class ModEnchantments {
 
         register(registerable, CELERITY, Enchantment.builder(Enchantment.definition(
                         items.getOrThrow(ItemTags.ARMOR_ENCHANTABLE),
-                        10, // вес
+                        500, // вес
                         2,  // макс уровень
                         Enchantment.leveledCost(15, 0),
                         Enchantment.leveledCost(35, 0),
@@ -102,7 +102,8 @@ public class ModEnchantments {
 
         register(registerable, WIND_BOOST, Enchantment.builder(Enchantment.definition(
                         items.getOrThrow(ItemTags.SWORD_ENCHANTABLE),
-                        5, // вес
+                        items.getOrThrow(ItemTags.MACE_ENCHANTABLE),
+                        500, // вес
                         3, // макс уровень
                         Enchantment.leveledCost(5, 7),
                         Enchantment.leveledCost(25, 9),

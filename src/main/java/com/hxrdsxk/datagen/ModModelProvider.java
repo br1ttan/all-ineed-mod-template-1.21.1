@@ -40,5 +40,7 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.registerArmor(((ArmorItem) ModItems.PINK_NETHERITE_LEGGINGS));
         itemModelGenerator.registerArmor(((ArmorItem) ModItems.PINK_NETHERITE_BOOTS));
 
+        itemModelGenerator.register(ModItems.PINK_GARNET_SWORD, Models.HANDHELD);
+
     }
 }
