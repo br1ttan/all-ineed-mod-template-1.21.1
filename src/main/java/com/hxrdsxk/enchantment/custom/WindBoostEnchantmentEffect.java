@@ -23,7 +23,7 @@ public record WindBoostEnchantmentEffect() implements EnchantmentEntityEffect {
 
     @Override
     public void apply(ServerWorld world, int level, EnchantmentEffectContext context, Entity attacker, Vec3d pos) {
-           HitResult hit = attacker.raycast(5.0, 0.0f, false);
+       HitResult Q = attacker.raycast(5.0, 0.0f, false);
 
         if (!(attacker instanceof LivingEntity livingAttacker)) return;
 
@@ -36,11 +36,13 @@ public record WindBoostEnchantmentEffect() implements EnchantmentEntityEffect {
         int duration = 60;
 
         // Используем эффект Slowness с высоким уровнем, чтобы цель не могла двигаться
-        target.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, duration, 10));
 
-        // Добавим Mining Fatigue, чтобы цель не могла бить
-        target.addStatusEffect(new StatusEffectInstance(StatusEffects.MINING_FATIGUE, duration, 10));
+        if (target != null) {
+            target.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, duration, 10));
 
+            // Добавим Mining Fatigue, чтобы цель не могла бить
+            target.addStatusEffect(new StatusEffectInstance(StatusEffects.MINING_FATIGUE, duration, 10));
+        }
 
 
         // Сила подкидывания зависит от уровня

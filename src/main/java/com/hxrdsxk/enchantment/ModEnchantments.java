@@ -28,6 +28,9 @@ public class ModEnchantments {
     public static final RegistryKey<Enchantment> WIND_BOOST =
             RegistryKey.of(RegistryKeys.ENCHANTMENT, Identifier.of(MOD_ID, "wind_boost"));
 
+    public static final RegistryKey<Enchantment> SONIC_BOOM =
+            RegistryKey.of(RegistryKeys.ENCHANTMENT, Identifier.of(MOD_ID, "sonic_boom"));
+
 
     public static void bootstrap(Registerable<Enchantment> registerable) {
         var enchantments = registerable.getRegistryLookup(RegistryKeys.ENCHANTMENT);
@@ -116,6 +119,23 @@ public class ModEnchantments {
                         EnchantmentEffectTarget.ATTACKER,
                         EnchantmentEffectTarget.VICTIM,
                         new WindBoostEnchantmentEffect()
+                ));
+
+        register(registerable, SONIC_BOOM, Enchantment.builder(Enchantment.definition(
+                        items.getOrThrow(ItemTags.TRIDENT_ENCHANTABLE),
+                        500, // вес
+                        1, // макс уровень
+                        Enchantment.leveledCost(5, 7),
+                        Enchantment.leveledCost(25, 9),
+                        20,
+                        AttributeModifierSlot.MAINHAND
+                ))
+                .exclusiveSet(enchantments.getOrThrow(EnchantmentTags.DAMAGE_EXCLUSIVE_SET))
+                .addEffect(
+                        EnchantmentEffectComponentTypes.POST_ATTACK,
+                        EnchantmentEffectTarget.ATTACKER,
+                        EnchantmentEffectTarget.VICTIM,
+                        new SonicBoomEnchantmentEffect()
                 ));
 
     }

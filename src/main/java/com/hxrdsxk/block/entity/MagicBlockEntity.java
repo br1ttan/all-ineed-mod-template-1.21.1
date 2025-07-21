@@ -103,8 +103,6 @@ public class MagicBlockEntity extends BlockEntity implements ImplementedInventor
         nbt.putFloat("OpenProgress", openProgress);
         nbt.putFloat("PageFlip", pageFlip);
         nbt.putFloat("PageFlipPrev", pageFlipPrev);
-
-        System.out.println("writing: " + inventory); // <- это выведет текущее состояние инвентаря на сервере
     }
 
 
@@ -116,8 +114,5 @@ public class MagicBlockEntity extends BlockEntity implements ImplementedInventor
         openProgress = nbt.getFloat("OpenProgress");
         pageFlip = nbt.getFloat("PageFlip");
         pageFlipPrev = nbt.getFloat("PageFlipPrev");
-
-        System.out.println("reading: " + inventory); // <- это клиент читает
     }
-
 }
