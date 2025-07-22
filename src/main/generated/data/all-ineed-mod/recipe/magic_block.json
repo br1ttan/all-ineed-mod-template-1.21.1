@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:echo_shard"
+    },
+    "B": {
+      "item": "minecraft:polished_deepslate"
+    },
+    "G": {
+      "item": "minecraft:crying_obsidian"
+    }
+  },
+  "pattern": [
+    "BBB",
+    "AGA",
+    "GGG"
+  ],
+  "result": {
+    "count": 1,
+    "id": "all-ineed-mod:magic_block"
+  }
+}
