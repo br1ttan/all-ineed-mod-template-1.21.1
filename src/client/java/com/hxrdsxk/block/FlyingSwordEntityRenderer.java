@@ -30,18 +30,16 @@ public class FlyingSwordEntityRenderer extends EntityRenderer<FlyingSwordEntity>
         matrices.translate(0, 0.25, 0);
         matrices.scale(1.5f, 1.5f, 1.5f);
 
-        // Поворачиваем к владельцу
-        LivingEntity owner = entity.getOwner();
-        if (owner != null) {
-            Vec3d toOwner = owner.getPos().subtract(entity.getPos());
-            double angleY = Math.toDegrees(Math.atan2(toOwner.x, toOwner.z));
+        // Поворот по направлению движения
+        Vec3d velocity = entity.getVelocity();
+        if (velocity.lengthSquared() > 0.0001) {
+            double angleY = Math.toDegrees(Math.atan2(velocity.x, velocity.z));
             matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees((float) angleY));
         }
 
-        // Повернуть "лезвие вверх", если нужно
+        // Повернуть меч лезвием вверх (если нужно — можно убрать)
         matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(90));
 
-        // Отрисовка
         MinecraftClient.getInstance().getItemRenderer().renderItem(
                 sword,
                 ModelTransformationMode.THIRD_PERSON_RIGHT_HAND,
@@ -55,6 +53,7 @@ public class FlyingSwordEntityRenderer extends EntityRenderer<FlyingSwordEntity>
 
         matrices.pop();
     }
+
 
 
     @Override
