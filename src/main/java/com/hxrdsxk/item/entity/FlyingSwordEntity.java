@@ -89,6 +89,7 @@ public class FlyingSwordEntity extends Entity {
         return this.owner;
     }
 
+
     @Override
     protected void readCustomDataFromNbt(NbtCompound nbt) {
         // TODO: сохранить меч
