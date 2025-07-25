@@ -29,10 +29,10 @@ public class FlyingSwordEntity extends Entity {
     public int age = 0;
     private boolean dealtDamage;
     private LivingEntity owner;
-
-    // Для сохранения владельца в NBT
     private UUID ownerUuid;
     public static final int SPIN_DURATION = 10;
+
+    private Vec3d initialDirection = Vec3d.ZERO;
 
     public FlyingSwordEntity(EntityType<? extends FlyingSwordEntity> type, World world) {
         super(type, world);
@@ -68,6 +68,13 @@ public class FlyingSwordEntity extends Entity {
         return target;
     }
 
+    public void setInitialDirection(Vec3d direction) {
+        this.initialDirection = direction;
+    }
+
+    public Vec3d getInitialDirection() {
+        return initialDirection;
+    }
 
     @Override
     public void tick() {
@@ -90,7 +97,6 @@ public class FlyingSwordEntity extends Entity {
             Vec3d targetPos = target.getPos().add(0, target.getHeight() / 2.0, 0);
             Vec3d direction = targetPos.subtract(this.getPos()).normalize();
 
-            // <<< Кэшируем угол при первом движении
             if (Double.isNaN(yawAngle) && direction.lengthSquared() > 0.0001) {
                 yawAngle = (float) Math.toDegrees(Math.atan2(direction.x, direction.z));
             }
@@ -108,12 +114,9 @@ public class FlyingSwordEntity extends Entity {
         }
     }
 
-
-
     @Override
     protected void writeCustomDataToNbt(NbtCompound nbt) {
         World world = getWorld();
-        // Сохраняем ItemStack меча
         ItemStack stack = getSwordStack();
         if (!stack.isEmpty()) {
             NbtElement stackNbt = stack.encode(world.getRegistryManager());
@@ -121,20 +124,22 @@ public class FlyingSwordEntity extends Entity {
                 nbt.put("SwordStack", compound);
             }
         }
-        // Сохраняем UUID владельца
         if (ownerUuid != null) {
             nbt.putUuid("OwnerUUID", ownerUuid);
         }
-
-        // Сохраняем age и dealtDamage
         nbt.putInt("Age", age);
         nbt.putBoolean("DealtDamage", dealtDamage);
+
+        // Сохраняем initialDirection
+        nbt.putDouble("InitDirX", initialDirection.x);
+        nbt.putDouble("InitDirY", initialDirection.y);
+        nbt.putDouble("InitDirZ", initialDirection.z);
     }
 
     @Override
     protected void readCustomDataFromNbt(NbtCompound nbt) {
         World world = getWorld();
-        if (nbt.contains("SwordStack", 10)) { // 10 — это ID для Compound
+        if (nbt.contains("SwordStack", 10)) {
             NbtCompound compound = nbt.getCompound("SwordStack");
             ItemStack stack = ItemStack.fromNbtOrEmpty(world.getRegistryManager(), compound);
             setSwordStack(stack);
@@ -145,6 +150,11 @@ public class FlyingSwordEntity extends Entity {
 
         age = nbt.getInt("Age");
         dealtDamage = nbt.getBoolean("DealtDamage");
-    }
 
+        // Читаем initialDirection
+        double x = nbt.getDouble("InitDirX");
+        double y = nbt.getDouble("InitDirY");
+        double z = nbt.getDouble("InitDirZ");
+        initialDirection = new Vec3d(x, y, z);
+    }
 }

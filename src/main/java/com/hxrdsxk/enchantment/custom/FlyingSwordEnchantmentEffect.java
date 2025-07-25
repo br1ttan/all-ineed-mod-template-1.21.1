@@ -38,9 +38,10 @@ public record FlyingSwordEnchantmentEffect() implements EnchantmentEntityEffect 
         Vec3d side = new Vec3d(-toAttacker.z, 0, toAttacker.x).normalize();
         if (world.random.nextBoolean()) side = side.multiply(-1);
 
+        // Позиция спавна: вбок и вверх
         Vec3d spawnPos = target.getPos()
-                .add(side.multiply(3.0)) // 3 блока в сторону
-                .add(0, 1.5, 0); // И немного выше
+                .add(side.multiply(3.0)) // дальше сбоку
+                .add(0, 4.0, 0);         // выше цели
 
         // 5. Создаём entity меча
         if (!world.isClient) {
@@ -56,6 +57,8 @@ public record FlyingSwordEnchantmentEffect() implements EnchantmentEntityEffect 
                     .multiply(0.2); // Очень медленный старт
 
             swordEntity.setVelocity(toTarget);
+            swordEntity.setInitialDirection(toTarget);
+
             world.spawnEntity(swordEntity);
 
             System.out.println("Меч создан на позиции: " + spawnPos); // Дебаг

@@ -15,41 +15,47 @@ import net.minecraft.util.math.RotationAxis;
 import net.minecraft.util.math.Vec3d;
 
 public class FlyingSwordEntityRenderer extends EntityRenderer<FlyingSwordEntity> {
+
     public FlyingSwordEntityRenderer(EntityRendererFactory.Context context) {
         super(context);
     }
 
     @Override
-    public void render(FlyingSwordEntity entity, float yaw, float tickDelta, MatrixStack matrices,
+    public void render(FlyingSwordEntity entity, float yawUnused, float tickDelta, MatrixStack matrices,
                        VertexConsumerProvider vertexConsumers, int light) {
         ItemStack sword = entity.getSwordStack();
         if (sword.isEmpty()) return;
 
         matrices.push();
 
-        // Позиция и масштаб
         matrices.translate(0, 0.25, 0);
         matrices.scale(1.5f, 1.5f, 1.5f);
 
         Vec3d velocity = entity.getVelocity();
-
-        // 1. Поворот в сторону полёта (Yaw по вектору)
-        if (velocity.lengthSquared() > 0.0001) {
-            float angleY = (float) Math.toDegrees(Math.atan2(velocity.x, velocity.z));
-            matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(angleY));
+        if (velocity.lengthSquared() < 0.0001) {
+            velocity = entity.getInitialDirection();
         }
 
-        // 2. Вращение лезвием вверх (X)
-        matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(90));
+        float yaw = 0f;
+        float pitch = 0f;
 
-        // 3. Анимация вращения при спавне (локально по Y)
+        if (velocity.lengthSquared() > 0.0001) {
+            yaw = (float) Math.toDegrees(Math.atan2(velocity.x, velocity.z));
+            double horizontalLength = Math.sqrt(velocity.x * velocity.x + velocity.z * velocity.z);
+            pitch = (float) Math.toDegrees(Math.atan2(velocity.y, horizontalLength));
+
+            matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(yaw));
+            matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(pitch + 180f));
+        }
+
         int spinDuration = FlyingSwordEntity.SPIN_DURATION;
         if (entity.age < spinDuration) {
             float spinAngle = ((entity.age + tickDelta) / spinDuration) * 360f;
-            matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(spinAngle));
+
+            // Вращаем вокруг оси меча (Z, если меч «лежит» в руке)
+            matrices.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(spinAngle));
         }
 
-        // 4. Рендер меча
         MinecraftClient.getInstance().getItemRenderer().renderItem(
                 sword,
                 ModelTransformationMode.THIRD_PERSON_RIGHT_HAND,
@@ -63,6 +69,8 @@ public class FlyingSwordEntityRenderer extends EntityRenderer<FlyingSwordEntity>
 
         matrices.pop();
     }
+
+
 
     @Override
     public Identifier getTexture(FlyingSwordEntity entity) {
