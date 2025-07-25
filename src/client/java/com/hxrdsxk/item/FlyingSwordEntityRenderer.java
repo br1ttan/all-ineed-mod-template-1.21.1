@@ -29,16 +29,25 @@ public class FlyingSwordEntityRenderer extends EntityRenderer<FlyingSwordEntity>
         matrices.translate(0, 0.25, 0);
         matrices.scale(1.5f, 1.5f, 1.5f);
 
-        // Поворот по направлению движения
+        // 1. Повернуть на цель (по мировому Y)
         Vec3d velocity = entity.getVelocity();
+        float angleY = 0;
         if (velocity.lengthSquared() > 0.0001) {
-            double angleY = Math.toDegrees(Math.atan2(velocity.x, velocity.z));
-            matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees((float) angleY));
+            angleY = (float) Math.toDegrees(Math.atan2(velocity.x, velocity.z));
         }
+        matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(angleY));
 
-        // Повернуть меч лезвием вверх (если нужно — можно убрать)
+        // 2. Лезвием вверх
         matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(90));
 
+        // 3. ВРАЩЕНИЕ по локальной вертикали меча (вокруг локального Y после всех поворотов)
+        int spinDuration = 6;
+        if (entity.age < spinDuration) {
+            float spinAngle = ((entity.age + tickDelta) / spinDuration) * 360f;
+            matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(spinAngle));
+        }
+
+        // 4. Рендер меча
         MinecraftClient.getInstance().getItemRenderer().renderItem(
                 sword,
                 ModelTransformationMode.THIRD_PERSON_RIGHT_HAND,
@@ -52,6 +61,7 @@ public class FlyingSwordEntityRenderer extends EntityRenderer<FlyingSwordEntity>
 
         matrices.pop();
     }
+
 
 
 
