@@ -18,6 +18,7 @@ public class FlyingSwordEntityRenderer extends EntityRenderer<FlyingSwordEntity>
     public FlyingSwordEntityRenderer(EntityRendererFactory.Context context) {
         super(context);
     }
+
     @Override
     public void render(FlyingSwordEntity entity, float yaw, float tickDelta, MatrixStack matrices,
                        VertexConsumerProvider vertexConsumers, int light) {
@@ -26,22 +27,23 @@ public class FlyingSwordEntityRenderer extends EntityRenderer<FlyingSwordEntity>
 
         matrices.push();
 
+        // Позиция и масштаб
         matrices.translate(0, 0.25, 0);
         matrices.scale(1.5f, 1.5f, 1.5f);
 
-        // 1. Повернуть на цель (по мировому Y)
         Vec3d velocity = entity.getVelocity();
-        float angleY = 0;
-        if (velocity.lengthSquared() > 0.0001) {
-            angleY = (float) Math.toDegrees(Math.atan2(velocity.x, velocity.z));
-        }
-        matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(angleY));
 
-        // 2. Лезвием вверх
+        // 1. Поворот в сторону полёта (Yaw по вектору)
+        if (velocity.lengthSquared() > 0.0001) {
+            float angleY = (float) Math.toDegrees(Math.atan2(velocity.x, velocity.z));
+            matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(angleY));
+        }
+
+        // 2. Вращение лезвием вверх (X)
         matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(90));
 
-        // 3. ВРАЩЕНИЕ по локальной вертикали меча (вокруг локального Y после всех поворотов)
-        int spinDuration = 6;
+        // 3. Анимация вращения при спавне (локально по Y)
+        int spinDuration = FlyingSwordEntity.SPIN_DURATION;
         if (entity.age < spinDuration) {
             float spinAngle = ((entity.age + tickDelta) / spinDuration) * 360f;
             matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(spinAngle));
@@ -61,9 +63,6 @@ public class FlyingSwordEntityRenderer extends EntityRenderer<FlyingSwordEntity>
 
         matrices.pop();
     }
-
-
-
 
     @Override
     public Identifier getTexture(FlyingSwordEntity entity) {

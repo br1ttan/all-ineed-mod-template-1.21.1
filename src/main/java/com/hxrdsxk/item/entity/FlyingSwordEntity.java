@@ -20,6 +20,8 @@ import net.minecraft.world.World;
 import java.util.UUID;
 
 public class FlyingSwordEntity extends Entity {
+    public float yawAngle = Float.NaN;
+
     private static final TrackedData<ItemStack> SWORD_STACK =
             DataTracker.registerData(FlyingSwordEntity.class, TrackedDataHandlerRegistry.ITEM_STACK);
 
@@ -30,6 +32,7 @@ public class FlyingSwordEntity extends Entity {
 
     // Для сохранения владельца в NBT
     private UUID ownerUuid;
+    public static final int SPIN_DURATION = 10;
 
     public FlyingSwordEntity(EntityType<? extends FlyingSwordEntity> type, World world) {
         super(type, world);
@@ -61,6 +64,10 @@ public class FlyingSwordEntity extends Entity {
         return this.owner;
     }
 
+    public LivingEntity getTarget() {
+        return target;
+    }
+
 
     @Override
     public void tick() {
@@ -77,15 +84,22 @@ public class FlyingSwordEntity extends Entity {
 
         if (target == null) return;
 
-        Vec3d targetPos = target.getPos().add(0, target.getHeight() / 2.0, 0);
-        Vec3d direction = targetPos.subtract(this.getPos()).normalize();
+        if (age < SPIN_DURATION) {
+            this.setVelocity(Vec3d.ZERO);
+        } else {
+            Vec3d targetPos = target.getPos().add(0, target.getHeight() / 2.0, 0);
+            Vec3d direction = targetPos.subtract(this.getPos()).normalize();
 
-        double speed = Math.min(0.2 + (age * 0.005), 0.7);
-        this.setVelocity(direction.multiply(speed));
+            // <<< Кэшируем угол при первом движении
+            if (Double.isNaN(yawAngle) && direction.lengthSquared() > 0.0001) {
+                yawAngle = (float) Math.toDegrees(Math.atan2(direction.x, direction.z));
+            }
 
-        this.move(MovementType.SELF, this.getVelocity());
+            double speed = Math.min(0.2 + ((age - SPIN_DURATION) * 0.005), 0.7);
+            this.setVelocity(direction.multiply(speed));
+            this.move(MovementType.SELF, this.getVelocity());
+        }
 
-        // Заменяем проверку дистанции на проверку пересечения боксами
         if (!world.isClient && !dealtDamage && this.getBoundingBox().intersects(target.getBoundingBox())) {
             target.damage(this.getDamageSources().indirectMagic(this, getOwner()), 5.0f);
             dealtDamage = true;
@@ -93,6 +107,7 @@ public class FlyingSwordEntity extends Entity {
             discard();
         }
     }
+
 
 
     @Override
