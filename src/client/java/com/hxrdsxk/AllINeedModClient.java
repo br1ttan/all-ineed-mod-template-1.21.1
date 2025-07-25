@@ -1,6 +1,6 @@
 package com.hxrdsxk;
 
-import com.hxrdsxk.block.FlyingSwordEntityRenderer;
+import com.hxrdsxk.item.FlyingSwordEntityRenderer;
 import com.hxrdsxk.block.MagicBlockEntityRenderer;
 import com.hxrdsxk.block.ModBlockEntities;
 import com.hxrdsxk.item.ModItemEntities;
