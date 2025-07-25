@@ -1,4 +1,4 @@
-// 1.21.1	2025-07-20T11:13:58.2046509	All INeed Mod/Model Definitions
+// 1.21.1	2025-07-24T15:21:29.6326711	All INeed Mod/Model Definitions
 7c65def40f6ff200de9c87e6c7975510fb31c903 assets\all-ineed-mod\models\block\pink_garnet_block.json
 ee3c3f121218fd0a2d2474af14b1f49e62bb1d6d assets\all-ineed-mod\blockstates\pink_garnet_ore.json
 8046308e2d91187963b6c2f1cd08388fb06ce5b9 assets\all-ineed-mod\models\block\pink_garnet_lamp.json
@@ -63,6 +63,6 @@ b8a2d5ab4e74473b617c62e0441482eb55f6f68a assets\all-ineed-mod\models\item\pink_n
 820b61a225259eeb61227f002ecf3db3edd64998 assets\all-ineed-mod\models\item\pink_netherite_boots_gold_trim.json
 50f8ae973142e3e4c9ae24ba06986ac5693022b1 assets\all-ineed-mod\models\item\pink_netherite_helmet_lapis_trim.json
 c03136a91f6ba76b3ee2fcbabc4bf5eb31ca6858 assets\all-ineed-mod\models\item\pink_netherite_helmet_gold_trim.json
-3628b3c543e68777f713e806ccf2931b6b437d90 assets\all-ineed-mod\models\block\pink_garnet_deepslate_ore.json
 3e93208443e67635dc4894bd3adabf1d5edfb6bd assets\all-ineed-mod\models\block\magic_block.json
+3628b3c543e68777f713e806ccf2931b6b437d90 assets\all-ineed-mod\models\block\pink_garnet_deepslate_ore.json
 9345aa2172055568e69e3bdfd22ab64b2e3ae4dc assets\all-ineed-mod\models\item\pink_netherite_boots_copper_trim.json

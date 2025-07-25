@@ -31,6 +31,8 @@ public class ModEnchantments {
     public static final RegistryKey<Enchantment> SONIC_BOOM =
             RegistryKey.of(RegistryKeys.ENCHANTMENT, Identifier.of(MOD_ID, "sonic_boom"));
 
+    public static final RegistryKey<Enchantment> FLYING_SWORD =
+            RegistryKey.of(RegistryKeys.ENCHANTMENT, Identifier.of(MOD_ID, "flying_sword"));
 
     public static void bootstrap(Registerable<Enchantment> registerable) {
         var enchantments = registerable.getRegistryLookup(RegistryKeys.ENCHANTMENT);
@@ -136,6 +138,22 @@ public class ModEnchantments {
                         EnchantmentEffectTarget.ATTACKER,
                         EnchantmentEffectTarget.VICTIM,
                         new SonicBoomEnchantmentEffect()
+                ));
+
+        register(registerable, FLYING_SWORD, Enchantment.builder(Enchantment.definition(
+                        items.getOrThrow(ItemTags.SWORD_ENCHANTABLE),   // применимо к книгам
+                        500,                                // вес
+                        1,                                 // максимальный уровень
+                        Enchantment.leveledCost(15, 0),
+                        Enchantment.leveledCost(35, 0),
+                        2,
+                        AttributeModifierSlot.MAINHAND
+                ))
+                .addEffect(
+                        EnchantmentEffectComponentTypes.POST_ATTACK, // или другое подходящее событие
+                        EnchantmentEffectTarget.ATTACKER,
+                        EnchantmentEffectTarget.VICTIM,
+                        new FlyingSwordEnchantmentEffect()
                 ));
 
     }

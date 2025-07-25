@@ -1,17 +1,19 @@
 package com.hxrdsxk;
 
+import com.hxrdsxk.block.FlyingSwordEntityRenderer;
 import com.hxrdsxk.block.MagicBlockEntityRenderer;
 import com.hxrdsxk.block.ModBlockEntities;
+import com.hxrdsxk.item.ModItemEntities;
 import com.hxrdsxk.item.ModItems;
 import com.hxrdsxk.item.custom.ActivateTotemPayload;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
+import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactories;
 import net.minecraft.client.render.entity.model.BookModel;
 import net.minecraft.client.render.entity.model.EntityModelLayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.util.Identifier;
 import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
 
@@ -28,6 +30,7 @@ public class AllINeedModClient implements ClientModInitializer {
 		);
 
 		BlockEntityRendererFactories.register(ModBlockEntities.MAGIC_BLOCK_ENTITY, MagicBlockEntityRenderer::new);
+		EntityRendererRegistry.register(ModItemEntities.FLYING_SWORD, FlyingSwordEntityRenderer::new);
 
 		PayloadTypeRegistry.playS2C().register(ActivateTotemPayload.ID, ActivateTotemPayload.CODEC);
 		PayloadTypeRegistry.playC2S().register(ActivateTotemPayload.ID, ActivateTotemPayload.CODEC);
@@ -39,6 +42,6 @@ public class AllINeedModClient implements ClientModInitializer {
 						context.client().gameRenderer.showFloatingItem(new ItemStack(ModItems.CHISEL));
 					});
 				}
-		);	}
-
+		);
+	}
 }

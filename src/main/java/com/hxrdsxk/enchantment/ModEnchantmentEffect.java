@@ -24,6 +24,8 @@ public class ModEnchantmentEffect {
 
     private static MapCodec<? extends EnchantmentEntityEffect> SONIC_BOOM = registerEntityEffect("sonic_boom", SonicBoomEnchantmentEffect.CODEC);
 
+    private static MapCodec<? extends EnchantmentEntityEffect> FLYING_SWORD = registerEntityEffect("flying_sword", FlyingSwordEnchantmentEffect.CODEC);
+
 
     private static MapCodec<? extends EnchantmentEntityEffect> registerEntityEffect(
             String name, MapCodec<? extends EnchantmentEntityEffect> codec) {
