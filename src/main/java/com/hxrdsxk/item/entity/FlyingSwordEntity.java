@@ -97,12 +97,22 @@ public class FlyingSwordEntity extends Entity {
             Vec3d targetPos = target.getPos().add(0, target.getHeight() / 2.0, 0);
             Vec3d direction = targetPos.subtract(this.getPos()).normalize();
 
+            // Первый раз рассчитываем угол
             if (Double.isNaN(yawAngle) && direction.lengthSquared() > 0.0001) {
                 yawAngle = (float) Math.toDegrees(Math.atan2(direction.x, direction.z));
             }
 
-            double speed = Math.min(0.2 + ((age - SPIN_DURATION) * 0.005), 0.7);
-            this.setVelocity(direction.multiply(speed));
+            // Ускорение: прибавляем к текущей скорости направление * ускорение
+            Vec3d acceleration = direction.multiply(0.05); // сила ускорения
+            Vec3d newVelocity = this.getVelocity().add(acceleration);
+
+            // Ограничиваем максимальную скорость
+            double maxSpeed = 1.2;
+            if (newVelocity.length() > maxSpeed) {
+                newVelocity = newVelocity.normalize().multiply(maxSpeed);
+            }
+
+            this.setVelocity(newVelocity);
             this.move(MovementType.SELF, this.getVelocity());
         }
 
@@ -113,6 +123,7 @@ public class FlyingSwordEntity extends Entity {
             discard();
         }
     }
+
 
     @Override
     protected void writeCustomDataToNbt(NbtCompound nbt) {
