@@ -23,7 +23,6 @@ public record WindBoostEnchantmentEffect() implements EnchantmentEntityEffect {
 
     @Override
     public void apply(ServerWorld world, int level, EnchantmentEffectContext context, Entity attacker, Vec3d pos) {
-       HitResult Q = attacker.raycast(5.0, 0.0f, false);
 
         if (!(attacker instanceof LivingEntity livingAttacker)) return;
 

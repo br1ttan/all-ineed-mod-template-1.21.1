@@ -10,6 +10,7 @@ import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.damage.DamageSources;
 import net.minecraft.entity.damage.DamageType;
 import net.minecraft.entity.damage.DamageTypes;
+import net.minecraft.entity.projectile.ArrowEntity;
 import net.minecraft.entity.projectile.TridentEntity;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.registry.RegistryKeys;
@@ -81,8 +82,8 @@ public class SonicBoomEnchantmentEffect implements EnchantmentEntityEffect {
             // 2. Урон не от трезубца
             // 3. Источник урона – не летящий трезубец (а игрок в ближнем бою)
             if (damageSource == null
-                    || !damageSource.isOf(DamageTypes.TRIDENT)
-                    || !(damageSource.getSource() instanceof TridentEntity)) {
+                    || (!damageSource.isOf(DamageTypes.TRIDENT) && !damageSource.isOf(DamageTypes.ARROW))
+                    || !(damageSource.getSource() instanceof TridentEntity || damageSource.getSource() instanceof ArrowEntity)) {
                 return;
             }
         }

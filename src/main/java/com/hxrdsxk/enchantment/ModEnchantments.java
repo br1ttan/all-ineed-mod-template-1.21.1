@@ -4,18 +4,26 @@ import com.hxrdsxk.enchantment.custom.*;
 import net.minecraft.component.EnchantmentEffectComponentTypes;
 import net.minecraft.component.type.AttributeModifierSlot;
 import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.effect.EnchantmentEffectTarget;
+import net.minecraft.enchantment.EnchantmentLevelBasedValue;
+import net.minecraft.enchantment.effect.*;
+import net.minecraft.enchantment.effect.entity.DamageEntityEnchantmentEffect;
+import net.minecraft.enchantment.effect.entity.SpawnParticlesEnchantmentEffect;
+import net.minecraft.entity.damage.DamageTypes;
+import net.minecraft.loot.condition.RandomChanceLootCondition;
+import net.minecraft.loot.provider.number.EnchantmentLevelLootNumberProvider;
+import net.minecraft.particle.ParticleTypes;
 import net.minecraft.registry.*;
+import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.registry.tag.EnchantmentTags;
 import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.floatprovider.ConstantFloatProvider;
+
+import java.util.List;
 
 import static com.hxrdsxk.AllINeedMod.MOD_ID;
 
 public class ModEnchantments {
-    public static final RegistryKey<Enchantment> LIGHTNING_STRIKER =
-            RegistryKey.of(RegistryKeys.ENCHANTMENT, Identifier.of(MOD_ID, "lightning_striker"));
-
     public static final RegistryKey<Enchantment> BOOM =
             RegistryKey.of(RegistryKeys.ENCHANTMENT, Identifier.of(MOD_ID, "boom"));
 
@@ -34,27 +42,13 @@ public class ModEnchantments {
     public static final RegistryKey<Enchantment> FLYING_SWORD =
             RegistryKey.of(RegistryKeys.ENCHANTMENT, Identifier.of(MOD_ID, "flying_sword"));
 
+    public static final RegistryKey<Enchantment> CAPTAIN_SHIELD =
+            RegistryKey.of(RegistryKeys.ENCHANTMENT, Identifier.of(MOD_ID, "captain_shield"));
+
     public static void bootstrap(Registerable<Enchantment> registerable) {
         var enchantments = registerable.getRegistryLookup(RegistryKeys.ENCHANTMENT);
 
         var items = registerable.getRegistryLookup(RegistryKeys.ITEM);
-
-        register(registerable, LIGHTNING_STRIKER, Enchantment.builder(Enchantment.definition(
-                        items.getOrThrow(ItemTags.WEAPON_ENCHANTABLE),
-                        items.getOrThrow(ItemTags.SWORD_ENCHANTABLE),
-                        500,
-                        2,
-                        Enchantment.leveledCost(5, 7),
-                        Enchantment.leveledCost(25, 9),
-                        2,
-                        AttributeModifierSlot.MAINHAND
-                ))
-                .exclusiveSet(enchantments.getOrThrow(EnchantmentTags.DAMAGE_EXCLUSIVE_SET))
-                .addEffect(
-                        EnchantmentEffectComponentTypes.POST_ATTACK,
-                        EnchantmentEffectTarget.ATTACKER,
-                        EnchantmentEffectTarget.VICTIM,
-                        new LightningStrikerEnchantmentEffect()));
 
         register(registerable, BOOM, Enchantment.builder(Enchantment.definition(
                                 items.getOrThrow(ItemTags.PICKAXES),  // применимо к киркам
@@ -155,6 +149,27 @@ public class ModEnchantments {
                         EnchantmentEffectTarget.VICTIM,
                         new FlyingSwordEnchantmentEffect()
                 ));
+
+        register(
+                registerable,
+                CAPTAIN_SHIELD,
+                Enchantment.builder(
+                                Enchantment.definition(
+                                        items.getOrThrow(ItemTags.SWORD_ENCHANTABLE),
+                                        500,
+                                        1,
+                                        Enchantment.leveledCost(15, 0),
+                                        Enchantment.leveledCost(35, 0),
+                                        2,
+                                        AttributeModifierSlot.MAINHAND
+                                )
+                        )
+                        .addEffect(
+                                EnchantmentEffectComponentTypes.TICK,
+                                new CaptainShieldEnchantmentEffect()
+                        )
+
+        );
 
     }
 

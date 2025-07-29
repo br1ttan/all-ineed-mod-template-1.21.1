@@ -13,9 +13,6 @@ public record EnlightenedEnchantmentEffect() implements EnchantmentEntityEffect 
 
     @Override
     public void apply(ServerWorld world, int level, EnchantmentEffectContext context, Entity user, Vec3d pos) {
-        // Твоя логика эффекта — например, небольшой взрыв без урона или свет вокруг игрока
-
-        // Пример: светящаяся частица вокруг игрока
         if (level > 0) {
             world.spawnParticles(
                     net.minecraft.particle.ParticleTypes.SOUL,

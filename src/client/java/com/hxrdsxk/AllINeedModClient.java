@@ -1,5 +1,7 @@
 package com.hxrdsxk;
 
+import com.hxrdsxk.entity.ModEntities;
+import com.hxrdsxk.entity.SteveNpcRenderer;
 import com.hxrdsxk.item.FlyingSwordEntityRenderer;
 import com.hxrdsxk.block.MagicBlockEntityRenderer;
 import com.hxrdsxk.block.ModBlockEntities;
@@ -31,6 +33,8 @@ public class AllINeedModClient implements ClientModInitializer {
 
 		BlockEntityRendererFactories.register(ModBlockEntities.MAGIC_BLOCK_ENTITY, MagicBlockEntityRenderer::new);
 		EntityRendererRegistry.register(ModItemEntities.FLYING_SWORD, FlyingSwordEntityRenderer::new);
+
+		EntityRendererRegistry.register(ModEntities.STEVE_NPC, SteveNpcRenderer::new);
 
 		PayloadTypeRegistry.playS2C().register(ActivateTotemPayload.ID, ActivateTotemPayload.CODEC);
 		PayloadTypeRegistry.playC2S().register(ActivateTotemPayload.ID, ActivateTotemPayload.CODEC);

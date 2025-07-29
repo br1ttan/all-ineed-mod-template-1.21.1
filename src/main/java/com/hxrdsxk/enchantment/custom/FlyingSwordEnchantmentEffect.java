@@ -7,6 +7,7 @@ import net.minecraft.enchantment.effect.EnchantmentEntityEffect;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.SwordItem;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.Vec3d;
 
@@ -14,22 +15,19 @@ public record FlyingSwordEnchantmentEffect() implements EnchantmentEntityEffect 
     public static final MapCodec<FlyingSwordEnchantmentEffect> CODEC =
             MapCodec.unit(FlyingSwordEnchantmentEffect::new);
 
-    // FlyingSwordEnchantmentEffect.java
+    @Override
     public void apply(ServerWorld world, int level, EnchantmentEffectContext context, Entity user, Vec3d pos) {
-        // 1. Проверяем, что user - это LivingEntity (игрок или моб)
         if (!(user instanceof LivingEntity attacker)) return;
 
-        // 2. Проверяем, что есть цель атаки
         LivingEntity target = null;
         if (context.owner() != null && context.owner() instanceof LivingEntity owner) {
             target = owner.getAttacking();
         }
         if (!(target instanceof LivingEntity)) return;
 
-        // 3. Берём меч из руки атакующего
         ItemStack sword = attacker.getAttacker().getMainHandStack();
-        if (sword.isEmpty()) {
-            System.out.println("Меч не найден в руке!"); // Дебаг-логирование
+
+        if (!(sword.getItem() instanceof SwordItem)) {
             return;
         }
 
@@ -43,7 +41,6 @@ public record FlyingSwordEnchantmentEffect() implements EnchantmentEntityEffect 
                 .add(side.multiply(3.0)) // дальше сбоку
                 .add(0, 4.0, 0);         // выше цели
 
-        // 5. Создаём entity меча
         if (!world.isClient) {
             FlyingSwordEntity swordEntity = new FlyingSwordEntity(world, attacker.getAttacker(), sword.copy(), target);
             swordEntity.setPosition(spawnPos);
@@ -60,8 +57,6 @@ public record FlyingSwordEnchantmentEffect() implements EnchantmentEntityEffect 
             swordEntity.setInitialDirection(toTarget);
 
             world.spawnEntity(swordEntity);
-
-            System.out.println("Меч создан на позиции: " + spawnPos); // Дебаг
         }
     }
 

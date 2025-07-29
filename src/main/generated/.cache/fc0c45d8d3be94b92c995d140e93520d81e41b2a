@@ -1,4 +1,4 @@
-// 1.21.1	2025-07-24T15:21:29.6326711	All INeed Mod/Model Definitions
+// 1.21.1	2025-07-29T20:30:27.983615	All INeed Mod/Model Definitions
 7c65def40f6ff200de9c87e6c7975510fb31c903 assets\all-ineed-mod\models\block\pink_garnet_block.json
 ee3c3f121218fd0a2d2474af14b1f49e62bb1d6d assets\all-ineed-mod\blockstates\pink_garnet_ore.json
 8046308e2d91187963b6c2f1cd08388fb06ce5b9 assets\all-ineed-mod\models\block\pink_garnet_lamp.json
@@ -14,8 +14,8 @@ ed248be1798bb0140ff8b219fdf14b9ef4a6ed2e assets\all-ineed-mod\models\item\pink_n
 4acffd11158c41181548feed3dd3da748461a193 assets\all-ineed-mod\models\item\chisel.json
 b25b3746d8b2625ec0f69ad86a2505cb60cebf5e assets\all-ineed-mod\models\item\pink_netherite_chestplate_emerald_trim.json
 196ac6efad735657d6e5b3b644f9becef561d3f3 assets\all-ineed-mod\models\item\pink_netherite_boots_amethyst_trim.json
-ed6780e560d5b103c295491466ba13ce811c8f6f assets\all-ineed-mod\models\item\pink_netherite_leggings_emerald_trim.json
 878582b0c5a283b07e0ce5c694baf84c842cb02b assets\all-ineed-mod\models\item\pink_netherite_leggings_copper_trim.json
+ed6780e560d5b103c295491466ba13ce811c8f6f assets\all-ineed-mod\models\item\pink_netherite_leggings_emerald_trim.json
 4126376489499ce0cc7e51dac92ff83f62f58ae9 assets\all-ineed-mod\models\item\pink_netherite_helmet_diamond_trim.json
 96c5d088e9f2e3a7045bf6babf0e1c3fd7225fae assets\all-ineed-mod\models\item\pink_netherite_chestplate_lapis_trim.json
 4f0a3497c56489c13589170a4876c153614058e8 assets\all-ineed-mod\models\item\pink_netherite_boots_netherite_trim.json

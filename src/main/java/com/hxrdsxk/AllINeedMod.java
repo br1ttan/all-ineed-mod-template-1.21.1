@@ -1,15 +1,14 @@
 package com.hxrdsxk;
 
-import com.hxrdsxk.block.ModBlockEntities;
 import com.hxrdsxk.block.ModBlocks;
 import com.hxrdsxk.components.ModComponents;
 import com.hxrdsxk.enchantment.ModEnchantmentEffect;
+import com.hxrdsxk.entity.ModEntities;
+import com.hxrdsxk.entity.custom.steve.SpawnSteveOnJoin;
 import com.hxrdsxk.item.ModItemGroups;
 import com.hxrdsxk.item.ModItems;
-import com.hxrdsxk.screen.ModScreenHandlers;
 import net.fabricmc.api.ModInitializer;
 
-import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -26,6 +25,10 @@ public class AllINeedMod implements ModInitializer {
 		ModItems.registerModItems();
 		ModBlocks.registerModBlocks();
 
+		ModEntities.register();
+
 		ModEnchantmentEffect.registerEnchantmentEffects();
+
+		SpawnSteveOnJoin.register();
 	}
 }
