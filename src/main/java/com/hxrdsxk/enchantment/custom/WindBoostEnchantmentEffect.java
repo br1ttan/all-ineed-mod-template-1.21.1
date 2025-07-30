@@ -26,7 +26,7 @@ public record WindBoostEnchantmentEffect() implements EnchantmentEntityEffect {
 
         if (!(attacker instanceof LivingEntity livingAttacker)) return;
 
-        LivingEntity me = livingAttacker.getAttacker();
+        LivingEntity me = context.owner();
 
         if (me == null) return;
 
