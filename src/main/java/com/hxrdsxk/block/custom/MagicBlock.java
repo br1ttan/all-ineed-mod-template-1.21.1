@@ -203,6 +203,7 @@ public class MagicBlock extends BlockWithEntity {
         if (compatible) {
             // Копируем предмет и накладываем чары
             ItemStack enchanted = itemStack.copy();
+
             EnchantmentHelper.set(enchanted, bookEnchantments);
 
             // Заменяем предмет в слоте 1 на зачарованный

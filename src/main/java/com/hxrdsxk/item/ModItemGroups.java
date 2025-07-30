@@ -22,6 +22,7 @@ public class ModItemGroups {
 
                         entries.add(ModItems.CHISEL);
                         entries.add(ModItems.PINK_GARNET_SWORD);
+                        entries.add(ModItems.GROWTH_TOGGLE);
 
                         entries.add(ModItems.PINK_NETHERITE_HELMET);
                         entries.add(ModItems.PINK_NETHERITE_CHESTPLATE);

@@ -25,6 +25,8 @@ public class ModEnchantmentEffect {
 
     private static MapCodec<? extends EnchantmentEntityEffect> CAPTAIN_SHIELD = registerEntityEffect("captain_shield", CaptainShieldEnchantmentEffect.CODEC);
 
+    private static MapCodec<? extends EnchantmentEntityEffect> HOOK = registerEntityEffect("hook", HookEnchantmentEffect.CODEC);
+
 
     private static MapCodec<? extends EnchantmentEntityEffect> registerEntityEffect(
             String name, MapCodec<? extends EnchantmentEntityEffect> codec) {

@@ -2,6 +2,7 @@ package com.hxrdsxk.item;
 
 import com.hxrdsxk.AllINeedMod;
 import com.hxrdsxk.item.custom.ChiselItem;
+import com.hxrdsxk.item.custom.GrowthToggleItem;
 import com.hxrdsxk.item.custom.PinkGarnetSwordItem;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.item.*;
@@ -34,6 +35,8 @@ public class ModItems {
     public static final Item PINK_GARNET_SWORD = registerItem("pink_garnet_sword",
             new PinkGarnetSwordItem(ToolMaterials.DIAMOND, new SwordItem.Settings()
                     .attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.DIAMOND, 3, -2.4f))));
+
+    public static final Item GROWTH_TOGGLE = registerItem("growth_toggle", new GrowthToggleItem(new Item.Settings().maxCount(1)));
 
 
     private static Item registerItem(String name, Item item) {

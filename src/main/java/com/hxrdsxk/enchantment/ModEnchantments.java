@@ -45,6 +45,9 @@ public class ModEnchantments {
     public static final RegistryKey<Enchantment> CAPTAIN_SHIELD =
             RegistryKey.of(RegistryKeys.ENCHANTMENT, Identifier.of(MOD_ID, "captain_shield"));
 
+    public static final RegistryKey<Enchantment> HOOK =
+            RegistryKey.of(RegistryKeys.ENCHANTMENT, Identifier.of(MOD_ID, "hook"));
+
     public static void bootstrap(Registerable<Enchantment> registerable) {
         var enchantments = registerable.getRegistryLookup(RegistryKeys.ENCHANTMENT);
 
@@ -167,6 +170,27 @@ public class ModEnchantments {
                         .addEffect(
                                 EnchantmentEffectComponentTypes.TICK,
                                 new CaptainShieldEnchantmentEffect()
+                        )
+
+        );
+
+        register(
+                registerable,
+                HOOK,
+                Enchantment.builder(
+                                Enchantment.definition(
+                                        items.getOrThrow(ItemTags.FISHING_ENCHANTABLE),
+                                        500,
+                                        1,
+                                        Enchantment.leveledCost(15, 0),
+                                        Enchantment.leveledCost(35, 0),
+                                        2,
+                                        AttributeModifierSlot.MAINHAND
+                                )
+                        )
+                        .addEffect(
+                                EnchantmentEffectComponentTypes.TICK,
+                                new HookEnchantmentEffect()
                         )
 
         );
