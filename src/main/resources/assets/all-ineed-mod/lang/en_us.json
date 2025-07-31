@@ -1,29 +1,14 @@
 {
   "item.all-ineed-mod.pink_garnet": "Pink Garnet",
-  "item.all-ineed-mod.raw_pink_garnet": "Raw Pink Garnet",
 
-  "item.all-ineed-mod.chisel": "Chisel",
-
-  "item.all-ineed-mod.lightning_striker": "Lightning Striker",
-
-
+  "item.all-ineed-mod.totem_of_darkness": "Totem of Darkness",
+  "tooltip.all-ineed-mod.totem_of_darkness.tooltip": "Show them your power",
 
   "block.all-ineed-mod.pink_garnet_block": "Block of Pink Garnet",
-  "block.all-ineed-mod.raw_pink_garnet_block": "Block of Raw Pink Garnet",
-
-  "block.all-ineed-mod.pink_garnet_lamp": "Pink Garnet Lamp",
-
 
   "block.all-ineed-mod.magic_block": "Magic Block",
 
-  "block.all-ineed-mod.pink_garnet_ore": "Pink Garnet Ore",
-  "block.all-ineed-mod.pink_garnet_deepslate_ore": "Deepslate Pink Garnet Ore",
-
   "itemgroup.all-ineed-mod.pink_garnet_items": "Pink Garnet Items",
   "itemgroup.all-ineed-mod.pink_garnet_blocks": "Pink Garnet Blocks",
-
-  "tooltip.all-ineed-mod.magic_block.tooltip": "This block is very magical",
-
-  "tooltip.all-ineed-mod.chisel.shift_down": "This item chisels §4blocks into §qbricks",
-  "tooltip.all-ineed-mod.chisel.shift": "Press shift for more information"
+  "tooltip.all-ineed-mod.magic_block.tooltip": "This block is very magical"
 }

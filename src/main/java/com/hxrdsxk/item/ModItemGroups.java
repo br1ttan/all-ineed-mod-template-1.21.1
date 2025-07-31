@@ -18,9 +18,8 @@ public class ModItemGroups {
                     .displayName(Text.translatable("itemgroup.all-ineed-mod.pink_garnet_items"))
                     .entries(((displayContext, entries) -> {
                         entries.add(ModItems.PINK_GARNET);
-                        entries.add(ModItems.RAW_PINK_GARNET);
 
-                        entries.add(ModItems.CHISEL);
+                        entries.add(ModItems.TOTEM_OF_DARKNESS);
                         entries.add(ModItems.PINK_GARNET_SWORD);
                         entries.add(ModItems.GROWTH_TOGGLE);
 
@@ -37,16 +36,7 @@ public class ModItemGroups {
                     .displayName(Text.translatable("itemgroup.all-ineed-mod.pink_garnet_blocks"))
                     .entries(((displayContext, entries) -> {
                         entries.add(ModBlocks.PINK_GARNET_BLOCK);
-                        entries.add(ModBlocks.RAW_PINK_GARNET_BLOCK);
-
-                        entries.add(ModBlocks.PINK_GARNET_ORE);
-                        entries.add(ModBlocks.PINK_GARNET_DEEPSLATE_ORE);
-
                         entries.add(ModBlocks.MAGIC_BLOCK);
-
-                        entries.add(ModBlocks.PINK_GARNET_LAMP);
-
-
                     }))
                     .build());
 

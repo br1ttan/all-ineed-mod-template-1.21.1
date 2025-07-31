@@ -1,4 +1,4 @@
-package com.hxrdsxk.item.custom;
+package com.hxrdsxk.item.payload;
 
 import com.hxrdsxk.AllINeedMod;
 import net.minecraft.network.packet.CustomPayload;

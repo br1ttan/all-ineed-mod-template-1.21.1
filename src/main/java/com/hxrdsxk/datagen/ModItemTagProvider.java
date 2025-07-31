@@ -1,11 +1,8 @@
 package com.hxrdsxk.datagen;
 
-
 import com.hxrdsxk.item.ModItems;
-import com.hxrdsxk.util.ModTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
-import net.minecraft.item.Items;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.ItemTags;
 
@@ -18,12 +15,6 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
 
     @Override
     protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
-        getOrCreateTagBuilder(ModTags.Items.TRANSFORMABLE_ITEMS)
-                .add(ModItems.RAW_PINK_GARNET)
-                .add(Items.COAL)
-                .add(Items.STICK)
-                .add(Items.APPLE);
-
         getOrCreateTagBuilder(ItemTags.TRIMMABLE_ARMOR)
                 .add(ModItems.PINK_NETHERITE_HELMET)
                 .add(ModItems.PINK_NETHERITE_LEGGINGS)

@@ -7,7 +7,7 @@ import com.hxrdsxk.block.MagicBlockEntityRenderer;
 import com.hxrdsxk.block.ModBlockEntities;
 import com.hxrdsxk.item.ModItemEntities;
 import com.hxrdsxk.item.ModItems;
-import com.hxrdsxk.item.custom.ActivateTotemPayload;
+import com.hxrdsxk.item.payload.ActivateTotemPayload;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
@@ -43,7 +43,7 @@ public class AllINeedModClient implements ClientModInitializer {
 				ActivateTotemPayload.ID,
 				(payload, context) -> {
 					context.client().execute(() -> {
-						context.client().gameRenderer.showFloatingItem(new ItemStack(ModItems.CHISEL));
+						context.client().gameRenderer.showFloatingItem(new ItemStack(ModItems.TOTEM_OF_DARKNESS));
 					});
 				}
 		);

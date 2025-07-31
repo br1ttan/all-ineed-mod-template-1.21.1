@@ -1,7 +1,6 @@
 package com.hxrdsxk;
 
 import com.hxrdsxk.block.ModBlocks;
-import com.hxrdsxk.components.ModComponents;
 import com.hxrdsxk.enchantment.ModEnchantmentEffect;
 import com.hxrdsxk.entity.ModEntities;
 import com.hxrdsxk.entity.custom.steve.SpawnSteveOnJoin;
@@ -18,8 +17,6 @@ public class AllINeedMod implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
-		ModComponents.register();
-
 		ModItemGroups.registerItemGroups();
 
 		ModItems.registerModItems();

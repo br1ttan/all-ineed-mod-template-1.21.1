@@ -17,12 +17,6 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
     protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
         getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
                 .add(ModBlocks.PINK_GARNET_BLOCK)
-                .add(ModBlocks.RAW_PINK_GARNET_BLOCK)
-                .add(ModBlocks.PINK_GARNET_ORE)
-                .add(ModBlocks.PINK_GARNET_DEEPSLATE_ORE)
                 .add(ModBlocks.MAGIC_BLOCK);
-
-        getOrCreateTagBuilder(BlockTags.NEEDS_IRON_TOOL)
-                .add(ModBlocks.PINK_GARNET_DEEPSLATE_ORE);
     }
 }
