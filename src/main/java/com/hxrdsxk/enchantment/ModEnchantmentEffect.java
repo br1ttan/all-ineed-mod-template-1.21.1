@@ -27,6 +27,13 @@ public class ModEnchantmentEffect {
 
     private static MapCodec<? extends EnchantmentEntityEffect> HOOK = registerEntityEffect("hook", HookEnchantmentEffect.CODEC);
 
+    private static final MapCodec<? extends EnchantmentEntityEffect> MAGNETISM =
+            registerEntityEffect("magnetism", MagnetismEnchantmentEffect.CODEC);
+
+    private static final MapCodec<? extends EnchantmentEntityEffect> WHIRLWIND =
+            registerEntityEffect("whirlwind", WhirlwindEnchantmentEffect.CODEC);
+
+
 
     private static MapCodec<? extends EnchantmentEntityEffect> registerEntityEffect(
             String name, MapCodec<? extends EnchantmentEntityEffect> codec) {

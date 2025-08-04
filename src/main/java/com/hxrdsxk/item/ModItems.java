@@ -15,6 +15,7 @@ public class ModItems {
 
     public static final Item TOTEM_OF_DARKNESS = registerItem("totem_of_darkness", new TotemOfDarknessItem(new Item.Settings().maxDamage(3)));
 
+    // PINK NETHERITE
     public static final Item PINK_NETHERITE_HELMET = registerItem("pink_netherite_helmet",
             new ArmorItem(ModArmorMaterials.PINK_NETHERITE_ARMOR_MATERIAL, ArmorItem.Type.HELMET, new Item.Settings()
                     .maxDamage(ArmorItem.Type.HELMET.getMaxDamage(15))));
@@ -34,6 +35,23 @@ public class ModItems {
     public static final Item PINK_GARNET_SWORD = registerItem("pink_garnet_sword",
             new PinkGarnetSwordItem(ToolMaterials.DIAMOND, new SwordItem.Settings()
                     .attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.DIAMOND, 3, -2.4f))));
+
+    // ENDERITE
+    public static final Item ENDERITE_HELMET = registerItem("enderite_helmet",
+            new ArmorItem(ModArmorMaterials.ENDERITE_ARMOR_MATERIAL, ArmorItem.Type.HELMET, new Item.Settings()
+                    .maxDamage(ArmorItem.Type.HELMET.getMaxDamage(15))));
+
+    public static final Item ENDERITE_CHESTPLATE = registerItem("enderite_chestplate",
+            new ArmorItem(ModArmorMaterials.ENDERITE_ARMOR_MATERIAL, ArmorItem.Type.CHESTPLATE, new Item.Settings()
+                    .maxDamage(ArmorItem.Type.CHESTPLATE.getMaxDamage(15))));
+
+    public static final Item ENDERITE_LEGGINGS = registerItem("enderite_leggings",
+            new ArmorItem(ModArmorMaterials.ENDERITE_ARMOR_MATERIAL, ArmorItem.Type.LEGGINGS, new Item.Settings()
+                    .maxDamage(ArmorItem.Type.LEGGINGS.getMaxDamage(15))));
+
+    public static final Item ENDERITE_BOOTS = registerItem("enderite_boots",
+            new ArmorItem(ModArmorMaterials.ENDERITE_ARMOR_MATERIAL, ArmorItem.Type.BOOTS, new Item.Settings()
+                    .maxDamage(ArmorItem.Type.BOOTS.getMaxDamage(15))));
 
     public static final Item GROWTH_TOGGLE = registerItem("growth_toggle", new GrowthToggleItem(new Item.Settings().maxCount(1)));
 

@@ -48,6 +48,14 @@ public class ModEnchantments {
     public static final RegistryKey<Enchantment> HOOK =
             RegistryKey.of(RegistryKeys.ENCHANTMENT, Identifier.of(MOD_ID, "hook"));
 
+    public static final RegistryKey<Enchantment> MAGNETISM =
+            RegistryKey.of(RegistryKeys.ENCHANTMENT, Identifier.of(MOD_ID, "magnetism"));
+
+    public static final RegistryKey<Enchantment> WHIRLWIND =
+            RegistryKey.of(RegistryKeys.ENCHANTMENT, Identifier.of(MOD_ID, "whirlwind"));
+
+
+
     public static void bootstrap(Registerable<Enchantment> registerable) {
         var enchantments = registerable.getRegistryLookup(RegistryKeys.ENCHANTMENT);
 
@@ -164,7 +172,7 @@ public class ModEnchantments {
                                         Enchantment.leveledCost(15, 0),
                                         Enchantment.leveledCost(35, 0),
                                         2,
-                                        AttributeModifierSlot.MAINHAND
+                                        AttributeModifierSlot.ANY
                                 )
                         )
                         .addEffect(
@@ -194,6 +202,46 @@ public class ModEnchantments {
                         )
 
         );
+
+        register(
+                registerable,
+                MAGNETISM,
+                Enchantment.builder(
+                        Enchantment.definition(
+                                items.getOrThrow(ItemTags.SWORD_ENCHANTABLE),
+                                500,
+                                1, // только 1 уровень
+                                Enchantment.leveledCost(10, 0),
+                                Enchantment.leveledCost(30, 0),
+                                2,
+                                AttributeModifierSlot.ANY
+                        )
+                ).addEffect(
+                        EnchantmentEffectComponentTypes.TICK,
+                        new MagnetismEnchantmentEffect()
+                )
+        );
+
+        register(
+                registerable,
+                WHIRLWIND,
+                Enchantment.builder(
+                        Enchantment.definition(
+                                items.getOrThrow(ItemTags.SWORDS),
+                                600,
+                                1,
+                                Enchantment.leveledCost(20, 10),
+                                Enchantment.leveledCost(50, 10),
+                                2,
+                                AttributeModifierSlot.MAINHAND
+                        )
+                ).addEffect(
+                        EnchantmentEffectComponentTypes.TICK,
+                        new WhirlwindEnchantmentEffect()
+                )
+        );
+
+
 
     }
 

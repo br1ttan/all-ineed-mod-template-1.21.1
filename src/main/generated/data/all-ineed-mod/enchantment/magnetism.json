@@ -1,24 +1,24 @@
 {
   "anvil_cost": 2,
   "description": {
-    "translate": "enchantment.all-ineed-mod.captain_shield"
+    "translate": "enchantment.all-ineed-mod.magnetism"
   },
   "effects": {
     "minecraft:tick": [
       {
         "effect": {
-          "type": "all-ineed-mod:captain_shield"
+          "type": "all-ineed-mod:magnetism"
         }
       }
     ]
   },
   "max_cost": {
-    "base": 35,
+    "base": 30,
     "per_level_above_first": 0
   },
   "max_level": 1,
   "min_cost": {
-    "base": 15,
+    "base": 10,
     "per_level_above_first": 0
   },
   "slots": [
