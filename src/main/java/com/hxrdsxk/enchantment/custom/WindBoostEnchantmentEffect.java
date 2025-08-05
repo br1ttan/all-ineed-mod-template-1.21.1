@@ -38,8 +38,6 @@ public record WindBoostEnchantmentEffect() implements EnchantmentEntityEffect {
 
         if (target != null) {
             target.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, duration, 10));
-
-            // Добавим Mining Fatigue, чтобы цель не могла бить
             target.addStatusEffect(new StatusEffectInstance(StatusEffects.MINING_FATIGUE, duration, 10));
         }
 
