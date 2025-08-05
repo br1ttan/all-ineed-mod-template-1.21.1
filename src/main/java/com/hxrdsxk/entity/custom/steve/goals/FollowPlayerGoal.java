@@ -1,5 +1,6 @@
-package com.hxrdsxk.entity.custom.steve;
+package com.hxrdsxk.entity.custom.steve.goals;
 
+import com.hxrdsxk.entity.custom.steve.SteveNpcEntity;
 import net.minecraft.entity.ai.goal.Goal;
 import net.minecraft.entity.player.PlayerEntity;
 

@@ -5,6 +5,7 @@ import net.minecraft.component.EnchantmentEffectComponentTypes;
 import net.minecraft.component.type.AttributeModifierSlot;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentLevelBasedValue;
+import net.minecraft.enchantment.Enchantments;
 import net.minecraft.enchantment.effect.*;
 import net.minecraft.enchantment.effect.entity.DamageEntityEnchantmentEffect;
 import net.minecraft.enchantment.effect.entity.SpawnParticlesEnchantmentEffect;
@@ -14,6 +15,7 @@ import net.minecraft.loot.provider.number.EnchantmentLevelLootNumberProvider;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.registry.*;
 import net.minecraft.registry.entry.RegistryEntry;
+import net.minecraft.registry.entry.RegistryEntryList;
 import net.minecraft.registry.tag.EnchantmentTags;
 import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.util.Identifier;
@@ -62,24 +64,24 @@ public class ModEnchantments {
         var items = registerable.getRegistryLookup(RegistryKeys.ITEM);
 
         register(registerable, BOOM, Enchantment.builder(Enchantment.definition(
-                                items.getOrThrow(ItemTags.PICKAXES),  // применимо к киркам
-                                500,                   // вес
-                                3,                   // макс уровень
+                                items.getOrThrow(ItemTags.PICKAXES),
+                                500,
+                                3,
                                 Enchantment.leveledCost(15, 20),
                                 Enchantment.leveledCost(35, 25),
-                                2,                   // anvil cost
+                                2,
                                 AttributeModifierSlot.MAINHAND
                         ))
                         .addEffect(
-                                EnchantmentEffectComponentTypes.HIT_BLOCK, // после добычи блока
+                                EnchantmentEffectComponentTypes.HIT_BLOCK,
                                 new BoomEnchantmentEffect()
                         )
         );
 
         register(registerable, ENLIGHTENED, Enchantment.builder(Enchantment.definition(
-                        items.getOrThrow(ItemTags.ARMOR_ENCHANTABLE),   // применимо к книгам
-                        500,                                // вес
-                        1,                                 // максимальный уровень
+                        items.getOrThrow(ItemTags.ARMOR_ENCHANTABLE),
+                        500,
+                        1,
                         Enchantment.leveledCost(15, 0),
                         Enchantment.leveledCost(35, 0),
                         2,
@@ -94,8 +96,8 @@ public class ModEnchantments {
 
         register(registerable, CELERITY, Enchantment.builder(Enchantment.definition(
                         items.getOrThrow(ItemTags.ARMOR_ENCHANTABLE),
-                        500, // вес
-                        2,  // макс уровень
+                        500,
+                        2,
                         Enchantment.leveledCost(15, 0),
                         Enchantment.leveledCost(35, 0),
                         2,
@@ -113,8 +115,8 @@ public class ModEnchantments {
         register(registerable, WIND_BOOST, Enchantment.builder(Enchantment.definition(
                         items.getOrThrow(ItemTags.SWORD_ENCHANTABLE),
                         items.getOrThrow(ItemTags.MACE_ENCHANTABLE),
-                        500, // вес
-                        3, // макс уровень
+                        500,
+                        3,
                         Enchantment.leveledCost(5, 7),
                         Enchantment.leveledCost(25, 9),
                         2,
@@ -146,16 +148,16 @@ public class ModEnchantments {
                 ));
 
         register(registerable, FLYING_SWORD, Enchantment.builder(Enchantment.definition(
-                        items.getOrThrow(ItemTags.SWORD_ENCHANTABLE),   // применимо к книгам
-                        500,                                // вес
-                        1,                                 // максимальный уровень
+                        items.getOrThrow(ItemTags.SWORD_ENCHANTABLE),
+                        500,
+                        1,
                         Enchantment.leveledCost(15, 0),
                         Enchantment.leveledCost(35, 0),
                         2,
                         AttributeModifierSlot.MAINHAND
                 ))
                 .addEffect(
-                        EnchantmentEffectComponentTypes.POST_ATTACK, // или другое подходящее событие
+                        EnchantmentEffectComponentTypes.POST_ATTACK,
                         EnchantmentEffectTarget.ATTACKER,
                         EnchantmentEffectTarget.VICTIM,
                         new FlyingSwordEnchantmentEffect()
