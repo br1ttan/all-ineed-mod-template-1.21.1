@@ -67,11 +67,10 @@ public record WindBoostEnchantmentEffect() implements EnchantmentEntityEffect {
             );
         }
 
-        // 🌬️ Звук ветра
         world.playSound(
                 null,
                 me.getBlockPos(),
-                net.minecraft.sound.SoundEvents.ENTITY_PHANTOM_FLAP, // Можно заменить на свой
+                net.minecraft.sound.SoundEvents.ENTITY_PHANTOM_FLAP,
                 net.minecraft.sound.SoundCategory.PLAYERS,
                 1.0f,
                 1.0f
