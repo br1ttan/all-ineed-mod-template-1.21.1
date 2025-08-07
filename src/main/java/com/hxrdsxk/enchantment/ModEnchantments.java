@@ -24,6 +24,7 @@ import net.minecraft.util.math.floatprovider.ConstantFloatProvider;
 import java.util.List;
 
 import static com.hxrdsxk.AllINeedMod.MOD_ID;
+import static net.minecraft.component.EnchantmentEffectComponentTypes.TICK;
 
 public class ModEnchantments {
     public static final RegistryKey<Enchantment> BOOM =
@@ -57,6 +58,8 @@ public class ModEnchantments {
             RegistryKey.of(RegistryKeys.ENCHANTMENT, Identifier.of(MOD_ID, "whirlwind"));
 
 
+    public static final RegistryKey<Enchantment> TELEKINESIS =
+            RegistryKey.of(RegistryKeys.ENCHANTMENT, Identifier.of(MOD_ID, "telekinesis"));
 
     public static void bootstrap(Registerable<Enchantment> registerable) {
         var enchantments = registerable.getRegistryLookup(RegistryKeys.ENCHANTMENT);
@@ -107,7 +110,7 @@ public class ModEnchantments {
                         AttributeModifierSlot.FEET
                 ))
                 .addEffect(
-                        EnchantmentEffectComponentTypes.TICK,
+                        TICK,
                         new CelerityEnchantmentEffect()
                 ));
 
@@ -178,7 +181,7 @@ public class ModEnchantments {
                                 )
                         )
                         .addEffect(
-                                EnchantmentEffectComponentTypes.TICK,
+                                TICK,
                                 new CaptainShieldEnchantmentEffect()
                         )
 
@@ -199,7 +202,7 @@ public class ModEnchantments {
                                 )
                         )
                         .addEffect(
-                                EnchantmentEffectComponentTypes.TICK,
+                                TICK,
                                 new HookEnchantmentEffect()
                         )
 
@@ -219,7 +222,7 @@ public class ModEnchantments {
                                 AttributeModifierSlot.ANY
                         )
                 ).addEffect(
-                        EnchantmentEffectComponentTypes.TICK,
+                        TICK,
                         new MagnetismEnchantmentEffect()
                 )
         );
@@ -238,12 +241,29 @@ public class ModEnchantments {
                                 AttributeModifierSlot.MAINHAND
                         )
                 ).addEffect(
-                        EnchantmentEffectComponentTypes.TICK,
+                        TICK,
                         new WhirlwindEnchantmentEffect()
                 )
         );
 
-
+        register(
+                registerable,
+                TELEKINESIS,
+                Enchantment.builder(
+                        Enchantment.definition(
+                                items.getOrThrow(ItemTags.SWORD_ENCHANTABLE),
+                                600,
+                                1,
+                                Enchantment.leveledCost(20, 10),
+                                Enchantment.leveledCost(50, 10),
+                                1,
+                                AttributeModifierSlot.MAINHAND
+                        )
+                ).addEffect(
+                        TICK,
+                        new TelekinesisEnchantmentEffect()
+                )
+        );
 
     }
 

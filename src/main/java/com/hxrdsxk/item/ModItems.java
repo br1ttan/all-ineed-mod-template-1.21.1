@@ -1,6 +1,7 @@
 package com.hxrdsxk.item;
 
 import com.hxrdsxk.AllINeedMod;
+import com.hxrdsxk.item.custom.BackpackItem;
 import com.hxrdsxk.item.custom.TotemOfDarknessItem;
 import com.hxrdsxk.item.custom.GrowthToggleItem;
 import com.hxrdsxk.item.custom.PinkGarnetSwordItem;
@@ -8,6 +9,7 @@ import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.util.Identifier;
 
 public class ModItems {
@@ -55,6 +57,8 @@ public class ModItems {
 
     public static final Item GROWTH_TOGGLE = registerItem("growth_toggle", new GrowthToggleItem(new Item.Settings().maxCount(1)));
 
+    public static final Item BACKPACK = registerItem("backpack",
+            new BackpackItem(ArmorMaterials.LEATHER.value(), new Item.Settings().maxCount(1)));
 
     private static Item registerItem(String name, Item item) {
         return Registry.register(Registries.ITEM, Identifier.of(AllINeedMod.MOD_ID, name), item);

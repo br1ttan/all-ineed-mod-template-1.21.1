@@ -3,7 +3,7 @@ package com.hxrdsxk.item;
     import com.hxrdsxk.AllINeedMod;
     import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ArmorMaterial;
-import net.minecraft.recipe.Ingredient;
+    import net.minecraft.recipe.Ingredient;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.entry.RegistryEntry;
@@ -35,7 +35,6 @@ public class ModArmorMaterials {
                 map.put(ArmorItem.Type.BODY, 6);
             }), 20, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, () -> Ingredient.ofItems(ModItems.PINK_GARNET),
                     List.of(new ArmorMaterial.Layer(Identifier.of(AllINeedMod.MOD_ID, "enderite"))), 0,0));
-
 
     public static RegistryEntry<ArmorMaterial> registerArmorMaterial(String name, Supplier<ArmorMaterial> material) {
         return Registry.registerReference(Registries.ARMOR_MATERIAL, Identifier.of(AllINeedMod.MOD_ID, name), material.get());

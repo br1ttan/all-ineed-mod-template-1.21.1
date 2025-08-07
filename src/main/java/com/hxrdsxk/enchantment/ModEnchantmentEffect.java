@@ -33,6 +33,8 @@ public class ModEnchantmentEffect {
     private static final MapCodec<? extends EnchantmentEntityEffect> WHIRLWIND =
             registerEntityEffect("whirlwind", WhirlwindEnchantmentEffect.CODEC);
 
+    private static final MapCodec<? extends EnchantmentEntityEffect> TELEKINESIS =
+            registerEntityEffect("telekinesis", TelekinesisEnchantmentEffect.CODEC);
 
 
     private static MapCodec<? extends EnchantmentEntityEffect> registerEntityEffect(

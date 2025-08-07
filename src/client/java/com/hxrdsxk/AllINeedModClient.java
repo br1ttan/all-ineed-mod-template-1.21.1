@@ -9,23 +9,39 @@ import com.hxrdsxk.item.ModItemEntities;
 import com.hxrdsxk.item.ModItems;
 import com.hxrdsxk.item.payload.ActivateTotemPayload;
 import net.fabricmc.api.ClientModInitializer;
+import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
+import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
+import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactories;
 import net.minecraft.client.render.entity.model.BookModel;
 import net.minecraft.client.render.entity.model.EntityModelLayer;
+import net.minecraft.client.util.InputUtil;
+import net.minecraft.entity.EquipmentSlot;
+import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.screen.GenericContainerScreenHandler;
+import net.minecraft.screen.ScreenHandlerType;
+import net.minecraft.screen.SimpleNamedScreenHandlerFactory;
+import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
+import org.lwjgl.glfw.GLFW;
 
 public class AllINeedModClient implements ClientModInitializer {
 	public static final EntityModelLayer ENCHANTING_TABLE_BOOK_LAYER = new EntityModelLayer(
 			Identifier.of("minecraft", "enchanting_table_book"), "main"
 	);
 
+	private static KeyBinding openBackpackKey;
+
 	@Override
 	public void onInitializeClient() {
+
 		EntityModelLayerRegistry.registerModelLayer(
 				ENCHANTING_TABLE_BOOK_LAYER,
 				BookModel::getTexturedModelData
@@ -33,7 +49,6 @@ public class AllINeedModClient implements ClientModInitializer {
 
 		BlockEntityRendererFactories.register(ModBlockEntities.MAGIC_BLOCK_ENTITY, MagicBlockEntityRenderer::new);
 		EntityRendererRegistry.register(ModItemEntities.FLYING_SWORD, FlyingSwordEntityRenderer::new);
-
 		EntityRendererRegistry.register(ModEntities.STEVE_NPC, SteveNpcRenderer::new);
 
 		PayloadTypeRegistry.playS2C().register(ActivateTotemPayload.ID, ActivateTotemPayload.CODEC);
@@ -47,5 +62,24 @@ public class AllINeedModClient implements ClientModInitializer {
 					});
 				}
 		);
+
+		openBackpackKey = KeyBindingHelper.registerKeyBinding(
+				new KeyBinding(
+						"key.all-ineed-mod.open_backpack",
+						InputUtil.Type.KEYSYM,
+						GLFW.GLFW_KEY_B,
+						"category.all-ineed-mod"
+				)
+		);
+
+		ClientTickEvents.END_CLIENT_TICK.register(client -> {
+			while (openBackpackKey.wasPressed()) {
+				if (client.player != null &&
+						client.player.getEquippedStack(EquipmentSlot.CHEST).getItem() == ModItems.BACKPACK) {
+
+					client.player.sendMessage(Text.literal("Рюкзак открыт!"), true);
+				}
+			}
+		});
 	}
 }
