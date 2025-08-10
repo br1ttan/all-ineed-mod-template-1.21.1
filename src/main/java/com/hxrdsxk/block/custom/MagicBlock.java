@@ -218,16 +218,16 @@ public class MagicBlock extends BlockWithEntity {
             world.playSound(null, pos, SoundEvents.ENTITY_GENERIC_EXPLODE.value(), SoundCategory.BLOCKS, 1f, 1f);
             world.spawnParticles(ParticleTypes.EXPLOSION, pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5, 1, 0.1, 0.1, 0.1, 0.0);
 
-            // Удаляем книгу и обновляем состояние
+            // Удаляем книгу и предмет
             magicBlockEntity.getItems().set(0, ItemStack.EMPTY);
+            magicBlockEntity.getItems().set(1, ItemStack.EMPTY);
+
+            // Обновляем состояние блока — убираем книгу и сбрасываем CLICKED
             world.setBlockState(pos, state.with(BOOK, false).with(CLICKED, false), Block.NOTIFY_ALL);
         }
 
         magicBlockEntity.sync();
     }
-
-
-
 
     @Override
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
