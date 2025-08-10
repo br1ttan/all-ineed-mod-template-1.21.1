@@ -35,7 +35,7 @@ public class MagicBlockEntityRenderer implements BlockEntityRenderer<MagicBlockE
 
         BlockState blockState = entity.getCachedState();
 
-        if (!blockState.get(MagicBlock.BOOK)) {
+        if (!blockState.get(MagicBlock.BOOK) && !blockState.get(MagicBlock.CLICKED)) {
             return;
         }
 

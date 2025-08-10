@@ -203,7 +203,6 @@ public class MagicBlock extends BlockWithEntity {
         if (compatible) {
             // Копируем предмет и накладываем чары
             ItemStack enchanted = itemStack.copy();
-
             EnchantmentHelper.set(enchanted, bookEnchantments);
 
             // Заменяем предмет в слоте 1 на зачарованный
@@ -211,17 +210,17 @@ public class MagicBlock extends BlockWithEntity {
             // Очищаем книгу
             magicBlockEntity.getItems().set(0, ItemStack.EMPTY);
 
-            // Визуальный и звуковой отклик
-            world.setBlockState(pos, state.with(CLICKED, true), Block.NOTIFY_ALL);
+            // Обновляем состояние блока (убираем книгу)
+            world.setBlockState(pos, state.with(BOOK, false).with(CLICKED, true), Block.NOTIFY_ALL);
             world.playSound(null, pos, SoundEvents.BLOCK_ENCHANTMENT_TABLE_USE, SoundCategory.BLOCKS, 1f, 1f);
         } else {
             // Несовместимость — взрывной эффект без урона
             world.playSound(null, pos, SoundEvents.ENTITY_GENERIC_EXPLODE.value(), SoundCategory.BLOCKS, 1f, 1f);
             world.spawnParticles(ParticleTypes.EXPLOSION, pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5, 1, 0.1, 0.1, 0.1, 0.0);
 
-            // Удаляем книгу
+            // Удаляем книгу и обновляем состояние
             magicBlockEntity.getItems().set(0, ItemStack.EMPTY);
-            world.setBlockState(pos, state.with(CLICKED, false), Block.NOTIFY_ALL);
+            world.setBlockState(pos, state.with(BOOK, false).with(CLICKED, false), Block.NOTIFY_ALL);
         }
 
         magicBlockEntity.sync();
