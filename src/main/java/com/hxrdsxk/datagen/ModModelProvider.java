@@ -37,5 +37,7 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.registerArmor(((ArmorItem) ModItems.ENDERITE_LEGGINGS));
         itemModelGenerator.registerArmor(((ArmorItem) ModItems.ENDERITE_BOOTS));
 
+        itemModelGenerator.register(ModItems.BACKPACK, Models.GENERATED);
+
     }
 }

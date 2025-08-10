@@ -1,6 +1,7 @@
-// 1.21.1	2025-08-08T12:20:03.1530581	All INeed Mod/Model Definitions
+// 1.21.1	2025-08-08T19:25:47.1982013	All INeed Mod/Model Definitions
 7c65def40f6ff200de9c87e6c7975510fb31c903 assets\all-ineed-mod\models\block\pink_garnet_block.json
 427a56301afa6586e06c799e40d45b43b2a1b79a assets\all-ineed-mod\models\item\enderite_helmet_copper_trim.json
+8d79f889ebbc5c13fd881e085f83340410535a5b assets\all-ineed-mod\models\item\backpack.json
 4c2f2277203b8528caf63551b6a994af9561ca4c assets\all-ineed-mod\models\item\pink_netherite_chestplate_netherite_trim.json
 ed248be1798bb0140ff8b219fdf14b9ef4a6ed2e assets\all-ineed-mod\models\item\pink_netherite_chestplate_copper_trim.json
 e2e2085f017e564a68c7547334bf42cf8567542d assets\all-ineed-mod\models\item\enderite_boots_quartz_trim.json
@@ -22,8 +23,8 @@ dc26249646b703431e6ffef0c685831d07dc6fa4 assets\all-ineed-mod\models\item\enderi
 8a45cac806f8384c64eb40fc3a317b3793cc04ae assets\all-ineed-mod\models\item\enderite_chestplate_quartz_trim.json
 6a2c16ca01fdbe8f744a83c86c0fe542633539cf assets\all-ineed-mod\models\item\pink_netherite_helmet_iron_trim.json
 09fc17ff0d6fd29847e10ef1aa816818775db421 assets\all-ineed-mod\models\item\pink_netherite_boots_lapis_trim.json
-781069b666df9dfdf8f8c8509b828b3182704e70 assets\all-ineed-mod\models\item\pink_netherite_leggings_diamond_trim.json
 b38479f1ebc8f2d400fce23c08b98695f3442d09 assets\all-ineed-mod\models\item\enderite_boots_copper_trim.json
+781069b666df9dfdf8f8c8509b828b3182704e70 assets\all-ineed-mod\models\item\pink_netherite_leggings_diamond_trim.json
 01c15e9089bd93beb51d2f1ed5f37516cf1e512f assets\all-ineed-mod\models\item\growth_toggle.json
 cce5c0dfcdd0756375dab4d6fa89f608cc59fbba assets\all-ineed-mod\models\item\magic_block.json
 5d6e481dda61da813a7850989b2b0a84df13fffd assets\all-ineed-mod\models\item\pink_netherite_helmet_emerald_trim.json
@@ -45,8 +46,8 @@ df6fdc8400d3e5ec2728901d1b170208eec04faf assets\all-ineed-mod\models\item\enderi
 26b3b1f5889645a04f62891fa705b5ec95f44933 assets\all-ineed-mod\models\item\enderite_leggings_amethyst_trim.json
 778131b522d1289f8e182e66e653638fffd8d7d4 assets\all-ineed-mod\models\item\pink_netherite_chestplate_iron_trim.json
 fde7aeb080d5ee8190769447c5b373f3c71d749e assets\all-ineed-mod\models\item\pink_netherite_chestplate.json
-1051212bd0f828a3c6b39e537a01215dedd40d53 assets\all-ineed-mod\models\item\pink_garnet.json
 f84c84b4944390f8ff639b9afa7f821d54ed1fec assets\all-ineed-mod\models\item\enderite_helmet_netherite_trim.json
+1051212bd0f828a3c6b39e537a01215dedd40d53 assets\all-ineed-mod\models\item\pink_garnet.json
 0427318b3c73fb8121d6ef2c01257f34f9bac2ed assets\all-ineed-mod\models\item\pink_netherite_leggings_redstone_trim.json
 c1e1da40b4185b17a9ee836ef25376e1d3d39e82 assets\all-ineed-mod\models\item\enderite_boots_gold_trim.json
 b25b3746d8b2625ec0f69ad86a2505cb60cebf5e assets\all-ineed-mod\models\item\pink_netherite_chestplate_emerald_trim.json
@@ -64,9 +65,9 @@ c7300d3edf8282c8aaff7cfbb898be2e3d1e4a41 assets\all-ineed-mod\models\item\pink_n
 c25c6d016c4bd9dbe1ac15dde482f81e2a9d601a assets\all-ineed-mod\models\item\pink_netherite_leggings_netherite_trim.json
 ec323ee81747375d1586c07483d99bb94c1f87ab assets\all-ineed-mod\models\item\pink_netherite_leggings.json
 6cb3b3cedf7bd6db311f949622079b811b2c4f93 assets\all-ineed-mod\models\item\enderite_chestplate_gold_trim.json
+e299c312e21e6a1bf9445cd6010a2621abac2715 assets\all-ineed-mod\models\item\enderite_leggings_iron_trim.json
 c634312c6a3be1c215e472fb340080402955e31f assets\all-ineed-mod\models\item\pink_garnet_sword.json
 49a2db0e2007223a1445d31f19a036d974d63bdf assets\all-ineed-mod\models\item\enderite_leggings_diamond_trim.json
-e299c312e21e6a1bf9445cd6010a2621abac2715 assets\all-ineed-mod\models\item\enderite_leggings_iron_trim.json
 11d0b56d4bb65a3585800cb8c62554dabaee258b assets\all-ineed-mod\models\item\pink_netherite_chestplate_diamond_trim.json
 7ecb7b9b08b9574c3d29a51ce5fc8fff371a39d8 assets\all-ineed-mod\models\item\enderite_chestplate.json
 b4e72a8e391cb66cd2f98acb257335850b08f396 assets\all-ineed-mod\models\item\pink_netherite_helmet.json
