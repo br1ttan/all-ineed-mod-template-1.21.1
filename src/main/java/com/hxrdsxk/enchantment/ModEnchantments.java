@@ -61,6 +61,10 @@ public class ModEnchantments {
     public static final RegistryKey<Enchantment> TELEKINESIS =
             RegistryKey.of(RegistryKeys.ENCHANTMENT, Identifier.of(MOD_ID, "telekinesis"));
 
+    public static final RegistryKey<Enchantment> DESERT_STORM =
+            RegistryKey.of(RegistryKeys.ENCHANTMENT, Identifier.of(MOD_ID, "desert_storm"));
+
+
     public static void bootstrap(Registerable<Enchantment> registerable) {
         var enchantments = registerable.getRegistryLookup(RegistryKeys.ENCHANTMENT);
 
@@ -265,6 +269,24 @@ public class ModEnchantments {
                 )
         );
 
+        register(
+                registerable,
+                DESERT_STORM,
+                Enchantment.builder(
+                        Enchantment.definition(
+                                items.getOrThrow(ItemTags.SWORD_ENCHANTABLE),
+                                600,
+                                3,
+                                Enchantment.leveledCost(20, 10),
+                                Enchantment.leveledCost(50, 10),
+                                2,
+                                AttributeModifierSlot.MAINHAND
+                        )
+                ).addEffect(
+                        TICK,
+                        new DesertStormEnchantmentEffect()
+                )
+        );
     }
 
 

@@ -27,6 +27,10 @@ public class ModEnchantmentEffect {
 
     private static MapCodec<? extends EnchantmentEntityEffect> HOOK = registerEntityEffect("hook", HookEnchantmentEffect.CODEC);
 
+    private static final MapCodec<? extends EnchantmentEntityEffect> DESERT_STORM =
+            registerEntityEffect("desert_storm", DesertStormEnchantmentEffect.CODEC);
+
+
     private static final MapCodec<? extends EnchantmentEntityEffect> MAGNETISM =
             registerEntityEffect("magnetism", MagnetismEnchantmentEffect.CODEC);
 
