@@ -13,7 +13,7 @@ import net.minecraft.client.render.VertexConsumer;
 
 public class BackpackRenderer implements ArmorRenderer {
     private final BackpackModel model;
-    private static final Identifier TEXTURE = Identifier.of(AllINeedMod.MOD_ID, "textures/backpack/diamond_backpack.png");
+    private static final Identifier TEXTURE = Identifier.of(AllINeedMod.MOD_ID, "backpack/backpack");
 
     public BackpackRenderer() {
         model = new BackpackModel(BackpackModel.getTexturedModelData().createModel());
