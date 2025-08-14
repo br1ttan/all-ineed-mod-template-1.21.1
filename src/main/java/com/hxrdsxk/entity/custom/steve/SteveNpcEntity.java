@@ -1,16 +1,20 @@
 package com.hxrdsxk.entity.custom.steve;
 
-import com.hxrdsxk.entity.custom.steve.goals.FollowPlayerGoal;
-import com.hxrdsxk.entity.custom.steve.goals.MineAndStoreGoal;
+import com.hxrdsxk.entity.ModEntities;
+import com.hxrdsxk.entity.custom.steve.goals.MagicRitualGoal;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.EquipmentSlot;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.goal.AttackGoal;
+import net.minecraft.entity.ai.goal.MeleeAttackGoal;
 import net.minecraft.entity.ai.goal.WanderAroundFarGoal;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.mob.PathAwareEntity;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.mob.MobEntity;
+import net.minecraft.entity.passive.CowEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.ItemStack;
@@ -108,10 +112,9 @@ public class SteveNpcEntity extends PathAwareEntity {
 
     @Override
     protected void initGoals() {
-        this.goalSelector.add(1, new MineAndStoreGoal(this));
-
+//        this.goalSelector.add(1, new MineAndStoreGoal(this));
+        this.goalSelector.add(3, new MagicRitualGoal(this));
         this.goalSelector.add(2, new WanderAroundFarGoal(this, 0.6));
-
     }
 
     public void sendMessage(Text text) {
