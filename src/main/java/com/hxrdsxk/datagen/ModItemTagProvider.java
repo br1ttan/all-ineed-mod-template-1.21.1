@@ -30,5 +30,12 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(ModItems.ENDERITE_CHESTPLATE)
                 .add(ModItems.ENDERITE_BOOTS);
 
+        getOrCreateTagBuilder(ItemTags.TRIMMABLE_ARMOR)
+                .add(ModItems.DOOM_HELMET)
+                .add(ModItems.DOOM_LEGGINGS)
+                .add(ModItems.DOOM_CHESTPLATE)
+                .add(ModItems.DOOM_BOOTS);
+
+
     }
 }

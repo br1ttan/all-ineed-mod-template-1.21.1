@@ -55,6 +55,22 @@ public class ModItems {
             new ArmorItem(ModArmorMaterials.ENDERITE_ARMOR_MATERIAL, ArmorItem.Type.BOOTS, new Item.Settings()
                     .maxDamage(ArmorItem.Type.BOOTS.getMaxDamage(15))));
 
+    public static final Item DOOM_HELMET = registerItem("doom_helmet",
+            new ArmorItem(ModArmorMaterials.DOOM_ARMOR_MATERIAL, ArmorItem.Type.HELMET, new Item.Settings()
+                    .maxDamage(ArmorItem.Type.HELMET.getMaxDamage(15))));
+
+    public static final Item DOOM_CHESTPLATE = registerItem("doom_chestplate",
+            new ArmorItem(ModArmorMaterials.DOOM_ARMOR_MATERIAL, ArmorItem.Type.CHESTPLATE, new Item.Settings()
+                    .maxDamage(ArmorItem.Type.CHESTPLATE.getMaxDamage(15))));
+
+    public static final Item DOOM_LEGGINGS = registerItem("doom_leggings",
+            new ArmorItem(ModArmorMaterials.DOOM_ARMOR_MATERIAL, ArmorItem.Type.LEGGINGS, new Item.Settings()
+                    .maxDamage(ArmorItem.Type.LEGGINGS.getMaxDamage(15))));
+
+    public static final Item DOOM_BOOTS = registerItem("doom_boots",
+            new ArmorItem(ModArmorMaterials.DOOM_ARMOR_MATERIAL, ArmorItem.Type.BOOTS, new Item.Settings()
+                    .maxDamage(ArmorItem.Type.BOOTS.getMaxDamage(15))));
+
     public static final Item GROWTH_TOGGLE = registerItem("growth_toggle", new GrowthToggleItem(new Item.Settings().maxCount(1)));
 
     public static final Item BACKPACK = registerItem("backpack",

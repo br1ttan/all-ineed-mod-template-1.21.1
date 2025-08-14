@@ -15,19 +15,13 @@ import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.client.rendering.v1.ArmorRenderer;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
-import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactories;
 import net.minecraft.client.render.entity.model.BookModel;
 import net.minecraft.client.render.entity.model.EntityModelLayer;
 import net.minecraft.client.util.InputUtil;
 import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.ItemStack;
-import net.minecraft.screen.GenericContainerScreenHandler;
-import net.minecraft.screen.ScreenHandlerType;
-import net.minecraft.screen.SimpleNamedScreenHandlerFactory;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
@@ -47,6 +41,15 @@ public class AllINeedModClient implements ClientModInitializer {
 				ENCHANTING_TABLE_BOOK_LAYER,
 				BookModel::getTexturedModelData
 		);
+
+		ArmorRenderer.register(
+				new SuitArmorRenderer(),
+				ModItems.DOOM_HELMET,
+				ModItems.DOOM_CHESTPLATE,
+				ModItems.DOOM_LEGGINGS,
+				ModItems.DOOM_BOOTS
+		);
+
 
 		ArmorRenderer.register(new BackpackRenderer(), ModItems.BACKPACK);
 		BlockEntityRendererFactories.register(ModBlockEntities.MAGIC_BLOCK_ENTITY, MagicBlockEntityRenderer::new);
