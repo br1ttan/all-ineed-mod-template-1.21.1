@@ -2,6 +2,7 @@ package com.hxrdsxk.block;
 
 import com.hxrdsxk.AllINeedMod;
 import com.hxrdsxk.block.entity.MagicBlockEntity;
+import com.hxrdsxk.block.entity.PinkGarnetBlockEntity;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.registry.Registries;
@@ -13,5 +14,11 @@ public class ModBlockEntities {
             Registries.BLOCK_ENTITY_TYPE,
             Identifier.of(AllINeedMod.MOD_ID, "magic_block"),
             BlockEntityType.Builder.create(MagicBlockEntity::new, ModBlocks.MAGIC_BLOCK).build(null)
+    );
+
+    public static final BlockEntityType<PinkGarnetBlockEntity> PINK_GARNET_BLOCK_ENTITY = Registry.register(
+            Registries.BLOCK_ENTITY_TYPE,
+            Identifier.of(AllINeedMod.MOD_ID, "pink_garnet_block"),
+            BlockEntityType.Builder.create(PinkGarnetBlockEntity::new, ModBlocks.PINK_GARNET_BLOCK).build(null)
     );
 }

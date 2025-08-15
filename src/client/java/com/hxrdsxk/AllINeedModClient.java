@@ -77,6 +77,7 @@ public class AllINeedModClient implements ClientModInitializer {
 				)
 		);
 
+
 		ClientTickEvents.END_CLIENT_TICK.register(client -> {
 			while (openBackpackKey.wasPressed()) {
 				if (client.player != null &&

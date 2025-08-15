@@ -2,6 +2,7 @@ package com.hxrdsxk.block;
 
 import com.hxrdsxk.AllINeedMod;
 import com.hxrdsxk.block.custom.MagicBlock;
+import com.hxrdsxk.block.custom.PinkGarnetBlock;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
@@ -15,7 +16,7 @@ import net.minecraft.util.Identifier;
 
 public class ModBlocks {
     public static final Block PINK_GARNET_BLOCK = registerBlock("pink_garnet_block",
-            new Block(AbstractBlock.Settings.create().strength(3.0F)
+            new PinkGarnetBlock(AbstractBlock.Settings.create().strength(3.0F)
                     .requiresTool()
                     .sounds(BlockSoundGroup.AMETHYST_BLOCK)));
 

@@ -24,11 +24,11 @@ public class PinkGarnetSwordItem extends SwordItem {
 
     @Override
     public int getMaxUseTime(ItemStack stack, LivingEntity user) {
-        return 72000; // как у еды или лука
+        return 72000;
     }
 
     @Override
     public UseAction getUseAction(ItemStack stack) {
-        return UseAction.BLOCK; // самая важная часть — показывает "блокирующую" анимацию
+        return UseAction.BLOCK;
     }
 }

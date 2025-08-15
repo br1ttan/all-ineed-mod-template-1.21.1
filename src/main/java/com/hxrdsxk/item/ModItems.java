@@ -15,6 +15,8 @@ import net.minecraft.util.Identifier;
 public class ModItems {
     public static final Item PINK_GARNET = registerItem("pink_garnet", new Item(new Item.Settings()));
 
+    public static final Item CORE_KEY = registerItem("core_key", new Item(new Item.Settings()));
+
     public static final Item TOTEM_OF_DARKNESS = registerItem("totem_of_darkness", new TotemOfDarknessItem(new Item.Settings().maxDamage(3)));
 
     // PINK NETHERITE
@@ -85,6 +87,7 @@ public class ModItems {
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(entries -> {
             entries.add(PINK_GARNET);
+            entries.add(BACKPACK);
         });
     }
 }

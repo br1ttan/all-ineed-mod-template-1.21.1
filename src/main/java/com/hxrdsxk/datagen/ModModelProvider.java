@@ -21,6 +21,8 @@ public class ModModelProvider extends FabricModelProvider {
     @Override
     public void generateItemModels(ItemModelGenerator itemModelGenerator) {
         itemModelGenerator.register(ModItems.PINK_GARNET, Models.GENERATED);
+        itemModelGenerator.register(ModItems.CORE_KEY, Models.GENERATED);
+
         itemModelGenerator.register(ModItems.TOTEM_OF_DARKNESS, Models.GENERATED);
         itemModelGenerator.register(ModItems.GROWTH_TOGGLE, Models.GENERATED);
 

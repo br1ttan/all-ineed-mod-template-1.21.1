@@ -18,6 +18,7 @@ public class ModItemGroups {
                     .displayName(Text.translatable("itemgroup.all-ineed-mod.pink_garnet_items"))
                     .entries(((displayContext, entries) -> {
                         entries.add(ModItems.PINK_GARNET);
+                        entries.add(ModItems.CORE_KEY);
 
                         entries.add(ModItems.TOTEM_OF_DARKNESS);
                         entries.add(ModItems.PINK_GARNET_SWORD);

@@ -1,4 +1,4 @@
-package com.hxrdsxk.datagen;
+ package com.hxrdsxk.datagen;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricDynamicRegistryProvider;
