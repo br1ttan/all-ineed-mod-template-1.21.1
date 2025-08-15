@@ -20,16 +20,13 @@ public class SuitArmorRenderer implements ArmorRenderer {
                        LivingEntity entity, EquipmentSlot slot, int light, BipedEntityModel<LivingEntity> contextModel) {
 
         if (model == null) {
-            // Use a simple biped model instead of player model
             model = new BipedEntityModel<>(
                     MinecraftClient.getInstance().getEntityModelLoader().getModelPart(EntityModelLayers.PLAYER_INNER_ARMOR)
             );
         }
 
-        // Use the context model instead of creating a new one
         contextModel.setVisible(false);
 
-        // Show only the relevant parts
         switch (slot) {
             case HEAD -> {
                 contextModel.head.visible = true;
@@ -39,14 +36,24 @@ public class SuitArmorRenderer implements ArmorRenderer {
                 contextModel.body.visible = true;
                 contextModel.rightArm.visible = true;
                 contextModel.leftArm.visible = true;
+
+                ((PlayerEntityModel<LivingEntity>) contextModel).jacket.visible = true;
+                ((PlayerEntityModel<LivingEntity>) contextModel).rightSleeve.visible = true;
+                ((PlayerEntityModel<LivingEntity>) contextModel).leftSleeve.visible = true;
             }
             case LEGS -> {
                 contextModel.rightLeg.visible = true;
                 contextModel.leftLeg.visible = true;
+
+                ((PlayerEntityModel<LivingEntity>) contextModel).rightPants.visible = true;
+                ((PlayerEntityModel<LivingEntity>) contextModel).leftPants.visible = true;
             }
             case FEET -> {
                 contextModel.rightLeg.visible = true;
                 contextModel.leftLeg.visible = true;
+
+                ((PlayerEntityModel<LivingEntity>) contextModel).rightPants.visible = true;
+                ((PlayerEntityModel<LivingEntity>) contextModel).leftPants.visible = true;
             }
         }
 
