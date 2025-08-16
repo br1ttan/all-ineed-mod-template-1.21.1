@@ -23,7 +23,7 @@ public class SpawnSteveOnJoin {
             npc.equipStack(EquipmentSlot.MAINHAND, new ItemStack(Items.IRON_SWORD));
 
             npc.equipStack(EquipmentSlot.OFFHAND, new ItemStack(Blocks.ACACIA_STAIRS));
-//            world.spawnEntity(npc);
+            world.spawnEntity(npc);
         });
     }
 }

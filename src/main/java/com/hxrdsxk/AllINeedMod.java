@@ -22,6 +22,9 @@ public class AllINeedMod implements ModInitializer {
 		ModItems.registerModItems();
 		ModBlocks.registerModBlocks();
 
+		CoreKeyEvents.register();
+		CoreKeyCommand.register();
+
 		ModEntities.register();
 
 		ModEnchantmentEffect.registerEnchantmentEffects();
