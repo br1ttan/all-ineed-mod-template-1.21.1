@@ -40,23 +40,7 @@ public class ModItems {
             new PinkGarnetSwordItem(ToolMaterials.DIAMOND, new SwordItem.Settings()
                     .attributeModifiers(SwordItem.createAttributeModifiers(ToolMaterials.DIAMOND, 3, -2.4f))));
 
-    // ENDERITE
-    public static final Item ENDERITE_HELMET = registerItem("enderite_helmet",
-            new ArmorItem(ModArmorMaterials.ENDERITE_ARMOR_MATERIAL, ArmorItem.Type.HELMET, new Item.Settings()
-                    .maxDamage(ArmorItem.Type.HELMET.getMaxDamage(15))));
-
-    public static final Item ENDERITE_CHESTPLATE = registerItem("enderite_chestplate",
-            new ArmorItem(ModArmorMaterials.ENDERITE_ARMOR_MATERIAL, ArmorItem.Type.CHESTPLATE, new Item.Settings()
-                    .maxDamage(ArmorItem.Type.CHESTPLATE.getMaxDamage(15))));
-
-    public static final Item ENDERITE_LEGGINGS = registerItem("enderite_leggings",
-            new ArmorItem(ModArmorMaterials.ENDERITE_ARMOR_MATERIAL, ArmorItem.Type.LEGGINGS, new Item.Settings()
-                    .maxDamage(ArmorItem.Type.LEGGINGS.getMaxDamage(15))));
-
-    public static final Item ENDERITE_BOOTS = registerItem("enderite_boots",
-            new ArmorItem(ModArmorMaterials.ENDERITE_ARMOR_MATERIAL, ArmorItem.Type.BOOTS, new Item.Settings()
-                    .maxDamage(ArmorItem.Type.BOOTS.getMaxDamage(15))));
-
+    // DOOM
     public static final Item DOOM_HELMET = registerItem("doom_helmet",
             new ArmorItem(ModArmorMaterials.DOOM_ARMOR_MATERIAL, ArmorItem.Type.HELMET, new Item.Settings()
                     .maxDamage(ArmorItem.Type.HELMET.getMaxDamage(15))));
@@ -75,9 +59,6 @@ public class ModItems {
 
     public static final Item GROWTH_TOGGLE = registerItem("growth_toggle", new GrowthToggleItem(new Item.Settings().maxCount(1)));
 
-    public static final Item BACKPACK = registerItem("backpack",
-            new BackpackItem(ArmorMaterials.LEATHER.value(), new Item.Settings().maxCount(1)));
-
     private static Item registerItem(String name, Item item) {
         return Registry.register(Registries.ITEM, Identifier.of(AllINeedMod.MOD_ID, name), item);
     }
@@ -87,7 +68,6 @@ public class ModItems {
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(entries -> {
             entries.add(PINK_GARNET);
-            entries.add(BACKPACK);
         });
     }
 }

@@ -39,7 +39,6 @@ public class GrowthToggleItem extends Item {
 
                 scaleAttribute.setBaseValue(newScale);
 
-                // Отправляем сообщение в чат
                 if (newScale <= MIN_SCALE) {
                     user.sendMessage(Text.literal("Вы достигли минимального размера!"), false);
                 } else if (newScale >= MAX_SCALE) {

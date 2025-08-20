@@ -2,8 +2,6 @@ package com.hxrdsxk;
 
 import com.hxrdsxk.block.ModBlocks;
 import com.hxrdsxk.enchantment.ModEnchantmentEffect;
-import com.hxrdsxk.entity.ModEntities;
-import com.hxrdsxk.entity.custom.steve.SpawnSteveOnJoin;
 import com.hxrdsxk.item.ModItemGroups;
 import com.hxrdsxk.item.ModItems;
 import com.hxrdsxk.util.CoreKeyCommand;
@@ -27,10 +25,6 @@ public class AllINeedMod implements ModInitializer {
 		CoreKeyEvents.register();
 		CoreKeyCommand.register();
 
-		ModEntities.register();
-
 		ModEnchantmentEffect.registerEnchantmentEffects();
-
-		SpawnSteveOnJoin.register();
 	}
 }

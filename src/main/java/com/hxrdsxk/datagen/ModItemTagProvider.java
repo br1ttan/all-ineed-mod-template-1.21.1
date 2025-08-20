@@ -15,27 +15,19 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
 
     @Override
     protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
-        getOrCreateTagBuilder(ItemTags.TRIMMABLE_ARMOR)
+        getOrCreateTagBuilder(ItemTags.ARMOR_ENCHANTABLE)
                 .add(ModItems.PINK_NETHERITE_HELMET)
                 .add(ModItems.PINK_NETHERITE_LEGGINGS)
                 .add(ModItems.PINK_NETHERITE_CHESTPLATE)
                 .add(ModItems.PINK_NETHERITE_BOOTS);
 
-        getOrCreateTagBuilder(ItemTags.SWORDS)
-                .add(ModItems.PINK_GARNET_SWORD);
-
-        getOrCreateTagBuilder(ItemTags.TRIMMABLE_ARMOR)
-                .add(ModItems.ENDERITE_HELMET)
-                .add(ModItems.ENDERITE_LEGGINGS)
-                .add(ModItems.ENDERITE_CHESTPLATE)
-                .add(ModItems.ENDERITE_BOOTS);
-
-        getOrCreateTagBuilder(ItemTags.TRIMMABLE_ARMOR)
+        getOrCreateTagBuilder(ItemTags.ARMOR_ENCHANTABLE)
                 .add(ModItems.DOOM_HELMET)
                 .add(ModItems.DOOM_LEGGINGS)
                 .add(ModItems.DOOM_CHESTPLATE)
                 .add(ModItems.DOOM_BOOTS);
 
-
+        getOrCreateTagBuilder(ItemTags.SWORD_ENCHANTABLE)
+                .add(ModItems.PINK_GARNET_SWORD);
     }
 }

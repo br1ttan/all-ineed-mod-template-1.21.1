@@ -30,10 +30,10 @@ public class ModItemGroups {
                         entries.add(ModItems.PINK_NETHERITE_BOOTS);
 
 
-                        entries.add(ModItems.ENDERITE_HELMET);
-                        entries.add(ModItems.ENDERITE_CHESTPLATE);
-                        entries.add(ModItems.ENDERITE_LEGGINGS);
-                        entries.add(ModItems.ENDERITE_BOOTS);
+                        entries.add(ModItems.DOOM_CHESTPLATE);
+                        entries.add(ModItems.DOOM_LEGGINGS);
+                        entries.add(ModItems.DOOM_BOOTS);
+                        entries.add(ModItems.DOOM_BOOTS);
                     }))
                     .build());
 

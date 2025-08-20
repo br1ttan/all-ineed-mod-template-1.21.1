@@ -36,7 +36,5 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .input('G', Items.CRYING_OBSIDIAN)
                 .criterion(hasItem(ModItems.PINK_GARNET), conditionsFromItem(ModItems.PINK_GARNET))
                 .offerTo(exporter);
-
-
     }
 }

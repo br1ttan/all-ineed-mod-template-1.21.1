@@ -1,5 +1,5 @@
 {
-  "item.all-ineed-mod.pink_garnet": "Pink Garnet",
+  "item.all-ineed-mod.pink_garnet": "Pink ingot",
 
   "item.all-ineed-mod.totem_of_darkness": "Totem of Darkness",
   "tooltip.all-ineed-mod.totem_of_darkness.tooltip": "Show them your power",
@@ -9,6 +9,5 @@
   "block.all-ineed-mod.magic_block": "Magic Block",
 
   "itemgroup.all-ineed-mod.pink_garnet_items": "Pink Garnet Items",
-  "itemgroup.all-ineed-mod.pink_garnet_blocks": "Pink Garnet Blocks",
-  "tooltip.all-ineed-mod.magic_block.tooltip": "This block is very magical"
+  "itemgroup.all-ineed-mod.pink_garnet_blocks": "Pink Garnet Blocks"
 }
