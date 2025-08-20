@@ -34,13 +34,11 @@ public class BackpackItem extends ArmorItem {
         ItemStack stack = user.getStackInHand(hand);
 
         if (!world.isClient && user instanceof ServerPlayerEntity player) {
-            // Получаем текущее содержимое контейнера или пустое
             ContainerComponent container = stack.getOrDefault(
                     DataComponentTypes.CONTAINER,
                     ContainerComponent.DEFAULT
             );
 
-            // Переносим в редактируемый инвентарь
             DefaultedList<ItemStack> items = DefaultedList.ofSize(27, ItemStack.EMPTY);
             container.copyTo(items);
 
@@ -69,7 +67,6 @@ public class BackpackItem extends ArmorItem {
                 user.setStackInHand(hand, newStack);
             });
 
-            // Открываем GUI с кастомными слотами
             player.openHandledScreen(new SimpleNamedScreenHandlerFactory(
                     (syncId, playerInventory, playerEntity) ->
                             new GenericContainerScreenHandler(ScreenHandlerType.GENERIC_9X3, syncId, playerInventory, inventory, 3) {

@@ -1,6 +1,5 @@
-package com.hxrdsxk;
+package com.hxrdsxk.util;
 
-import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.network.ServerPlayerEntity;
 
 import java.util.HashMap;

@@ -1,4 +1,4 @@
-package com.hxrdsxk;
+package com.hxrdsxk.util;
 
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.minecraft.server.command.CommandManager;

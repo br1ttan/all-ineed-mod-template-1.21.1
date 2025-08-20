@@ -1,4 +1,4 @@
-package com.hxrdsxk.item;
+package com.hxrdsxk.entity.custom.item;
 
 import com.hxrdsxk.item.entity.FlyingSwordEntity;
 import net.minecraft.client.MinecraftClient;

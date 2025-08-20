@@ -1,5 +1,7 @@
-package com.hxrdsxk;
+package com.hxrdsxk.armor.custom;
 
+import com.hxrdsxk.AllINeedMod;
+import com.hxrdsxk.model.custom.BackpackModel;
 import net.fabricmc.fabric.api.client.rendering.v1.ArmorRenderer;
 import net.minecraft.client.model.Model;
 import net.minecraft.client.render.OverlayTexture;

@@ -6,6 +6,8 @@ import com.hxrdsxk.entity.ModEntities;
 import com.hxrdsxk.entity.custom.steve.SpawnSteveOnJoin;
 import com.hxrdsxk.item.ModItemGroups;
 import com.hxrdsxk.item.ModItems;
+import com.hxrdsxk.util.CoreKeyCommand;
+import com.hxrdsxk.util.CoreKeyEvents;
 import net.fabricmc.api.ModInitializer;
 
 import org.slf4j.Logger;

@@ -1,8 +1,7 @@
-package com.hxrdsxk.block;
+package com.hxrdsxk.block.custom;
 
-import com.hxrdsxk.AllINeedModClient;
-import com.hxrdsxk.block.custom.MagicBlock;
 import com.hxrdsxk.block.entity.MagicBlockEntity;
+import com.hxrdsxk.model.ModModelLayers;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.*;
@@ -26,7 +25,7 @@ public class MagicBlockEntityRenderer implements BlockEntityRenderer<MagicBlockE
     private static final float CLOSING_SPEED = 0.05F; // Скорость закрытия книги
 
     public MagicBlockEntityRenderer(BlockEntityRendererFactory.Context context) {
-        this.bookModel = new BookModel(context.getLayerModelPart(AllINeedModClient.ENCHANTING_TABLE_BOOK_LAYER));
+        this.bookModel = new BookModel(context.getLayerModelPart(ModModelLayers.ENCHANTING_TABLE_BOOK_LAYER));
     }
 
     @Override

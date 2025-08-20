@@ -1,4 +1,4 @@
-package com.hxrdsxk.entity;
+package com.hxrdsxk.entity.custom.entity;
 
 
 import com.hxrdsxk.entity.custom.steve.SteveNpcEntity;

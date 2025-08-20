@@ -1,4 +1,4 @@
-package com.hxrdsxk;
+package com.hxrdsxk.util;
 
 import com.hxrdsxk.item.ModItems;
 import net.minecraft.server.network.ServerPlayerEntity;

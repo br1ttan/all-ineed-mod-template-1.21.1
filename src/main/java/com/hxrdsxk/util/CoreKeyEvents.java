@@ -1,4 +1,4 @@
-package com.hxrdsxk;
+package com.hxrdsxk.util;
 
 import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents;
 import net.minecraft.server.network.ServerPlayerEntity;

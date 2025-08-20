@@ -1,4 +1,4 @@
-package com.hxrdsxk;
+package com.hxrdsxk.model.custom;
 
 import net.minecraft.client.model.*;
 import net.minecraft.client.render.entity.model.BipedEntityModel;

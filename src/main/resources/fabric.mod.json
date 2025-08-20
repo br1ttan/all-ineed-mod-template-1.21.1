@@ -19,8 +19,7 @@
 			"com.hxrdsxk.AllINeedMod"
 		],
 		"client": [
-			"com.hxrdsxk.AllINeedModClient",
-			"com.hxrdsxk.RandomJoinLeaveClientMod"
+			"com.hxrdsxk.AllINeedModClient"
 		],
 		"fabric-datagen": [
 			"com.hxrdsxk.AllINeedModDataGenerator"

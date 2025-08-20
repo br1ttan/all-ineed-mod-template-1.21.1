@@ -1,5 +1,6 @@
-package com.hxrdsxk;
+package com.hxrdsxk.armor.custom;
 
+import com.hxrdsxk.AllINeedMod;
 import net.fabricmc.fabric.api.client.rendering.v1.ArmorRenderer;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.VertexConsumerProvider;
