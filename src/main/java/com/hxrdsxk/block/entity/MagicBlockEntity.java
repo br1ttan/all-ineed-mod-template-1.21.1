@@ -1,4 +1,3 @@
-// MagicBlockEntity.java
 package com.hxrdsxk.block.entity;
 
 import com.hxrdsxk.block.ModBlockEntities;
@@ -15,7 +14,6 @@ import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
-
 import org.jetbrains.annotations.Nullable;
 
 public class MagicBlockEntity extends BlockEntity implements ImplementedInventory {
@@ -25,6 +23,7 @@ public class MagicBlockEntity extends BlockEntity implements ImplementedInventor
     public float openProgress = 0.0F;
     public float pageFlip = 0.0F;
     public float pageFlipPrev = 0.0F;
+    public float previewAlpha = 0.0F;
 
     public MagicBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.MAGIC_BLOCK_ENTITY, pos, state);
@@ -50,7 +49,7 @@ public class MagicBlockEntity extends BlockEntity implements ImplementedInventor
 
     public void spawnEnchantingParticles(ServerWorld world, BlockPos pos, BlockState state) {
         if (world.isClient) {
-            return; // Не делаем ничего на клиенте — сервер отправит сам
+            return;
         }
 
         double centerX = pos.getX() + 0.5;
@@ -69,7 +68,6 @@ public class MagicBlockEntity extends BlockEntity implements ImplementedInventor
             double particleY = centerY + offsetY;
             double particleZ = centerZ + offsetZ;
 
-            // Увеличиваем множитель скорости по X и Z, чтобы частицы быстрее шли в центр
             double velocityX = (centerX - particleX) * 0.3;
             double velocityY = -0.05;
             double velocityZ = (centerZ - particleZ) * 0.3;
@@ -83,7 +81,6 @@ public class MagicBlockEntity extends BlockEntity implements ImplementedInventor
             );
         }
     }
-
 
     @Nullable
     @Override
@@ -103,16 +100,16 @@ public class MagicBlockEntity extends BlockEntity implements ImplementedInventor
         nbt.putFloat("OpenProgress", openProgress);
         nbt.putFloat("PageFlip", pageFlip);
         nbt.putFloat("PageFlipPrev", pageFlipPrev);
+        nbt.putFloat("PreviewAlpha", previewAlpha);
     }
-
 
     @Override
     protected void readNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
         super.readNbt(nbt, registryLookup);
-
         Inventories.readNbt(nbt, inventory, registryLookup);
         openProgress = nbt.getFloat("OpenProgress");
         pageFlip = nbt.getFloat("PageFlip");
         pageFlipPrev = nbt.getFloat("PageFlipPrev");
+        previewAlpha = nbt.getFloat("PreviewAlpha");
     }
 }

@@ -6,12 +6,10 @@ import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.ItemEnchantmentsComponent;
-import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.*;
 import net.minecraft.particle.ParticleTypes;
-import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
@@ -30,8 +28,6 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
-
-import java.util.Map;
 
 public class MagicBlock extends BlockWithEntity {
     public static final MapCodec<MagicBlock> CODEC = createCodec(MagicBlock::new);
@@ -93,7 +89,6 @@ public class MagicBlock extends BlockWithEntity {
         boolean hasBook = !bookStack.isEmpty();
         boolean hasItem = !itemStack.isEmpty();
 
-        // Добавить книгу
         if (!hasBook && held.getItem() == Items.ENCHANTED_BOOK) {
             magicBlockEntity.getItems().set(0, held.split(1));
             magicBlockEntity.sync();
@@ -104,7 +99,6 @@ public class MagicBlock extends BlockWithEntity {
             return ActionResult.SUCCESS;
         }
 
-        // Поставить инструмент
         if (hasBook && !hasItem && !held.isEmpty()) {
             Item item = held.getItem();
             if (item instanceof ToolItem || item instanceof ArmorItem) {
@@ -112,7 +106,6 @@ public class MagicBlock extends BlockWithEntity {
                 magicBlockEntity.sync();
 
                 world.playSound(null, pos, SoundEvents.ITEM_BOOK_PUT, SoundCategory.BLOCKS, 1f, 1f);
-                // Сбрасываем CLICKED
                 world.setBlockState(pos, state.with(CLICKED, false), Block.NOTIFY_ALL);
                 return ActionResult.SUCCESS;
             } else {
@@ -121,17 +114,13 @@ public class MagicBlock extends BlockWithEntity {
             }
         }
 
-        // Пустая рука: забрать книгу или инструмент
         if (held.isEmpty()) {
             if (hasBook) {
                 if (hasItem) {
                     world.playSound(null, pos, SoundEvents.ITEM_BOOK_PUT, SoundCategory.BLOCKS, 1f, 1f);
-
                     player.sendMessage(Text.literal("Сначала заберите инструмент!"), true);
                     magicBlockEntity.spawnEnchantingParticles((ServerWorld) world, pos, state);
-
                     world.scheduleBlockTick(pos, state.getBlock(), 33);
-
                     return ActionResult.SUCCESS;
                 }
 
@@ -150,14 +139,12 @@ public class MagicBlock extends BlockWithEntity {
             if (hasItem) {
                 ItemStack removedItem = magicBlockEntity.getItems().get(1);
                 magicBlockEntity.getItems().set(1, ItemStack.EMPTY);
-
                 magicBlockEntity.sync();
 
                 if (!player.getInventory().insertStack(removedItem)) {
                     player.dropItem(removedItem, false);
                 }
 
-                // Сбрасываем CLICKED, если нужно
                 world.setBlockState(pos, state.with(CLICKED, false), Block.NOTIFY_ALL);
                 return ActionResult.SUCCESS;
             }
@@ -188,10 +175,8 @@ public class MagicBlock extends BlockWithEntity {
 
         if (bookStack.isEmpty() || itemStack.isEmpty()) return;
 
-        // Считываем чары из книги
         var bookEnchantments = bookStack.getOrDefault(DataComponentTypes.STORED_ENCHANTMENTS, ItemEnchantmentsComponent.DEFAULT);
 
-        // Проверка на совместимость чар с предметом
         boolean compatible = true;
         for (var enchantmentEntry : bookEnchantments.getEnchantments()) {
             if (!enchantmentEntry.value().isAcceptableItem(itemStack)) {
@@ -201,28 +186,21 @@ public class MagicBlock extends BlockWithEntity {
         }
 
         if (compatible) {
-            // Копируем предмет и накладываем чары
             ItemStack enchanted = itemStack.copy();
             EnchantmentHelper.set(enchanted, bookEnchantments);
 
-            // Заменяем предмет в слоте 1 на зачарованный
             magicBlockEntity.getItems().set(1, enchanted);
-            // Очищаем книгу
             magicBlockEntity.getItems().set(0, ItemStack.EMPTY);
 
-            // Обновляем состояние блока (убираем книгу)
             world.setBlockState(pos, state.with(BOOK, false).with(CLICKED, true), Block.NOTIFY_ALL);
             world.playSound(null, pos, SoundEvents.BLOCK_ENCHANTMENT_TABLE_USE, SoundCategory.BLOCKS, 1f, 1f);
         } else {
-            // Несовместимость — взрывной эффект без урона
             world.playSound(null, pos, SoundEvents.ENTITY_GENERIC_EXPLODE.value(), SoundCategory.BLOCKS, 1f, 1f);
             world.spawnParticles(ParticleTypes.EXPLOSION, pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5, 1, 0.1, 0.1, 0.1, 0.0);
 
-            // Удаляем книгу и предмет
             magicBlockEntity.getItems().set(0, ItemStack.EMPTY);
             magicBlockEntity.getItems().set(1, ItemStack.EMPTY);
 
-            // Обновляем состояние блока — убираем книгу и сбрасываем CLICKED
             world.setBlockState(pos, state.with(BOOK, false).with(CLICKED, false), Block.NOTIFY_ALL);
         }
 
