@@ -29,10 +29,9 @@ public class ModItemGroups {
                         entries.add(ModItems.PINK_NETHERITE_LEGGINGS);
                         entries.add(ModItems.PINK_NETHERITE_BOOTS);
 
-
+                        entries.add(ModItems.DOOM_HELMET);
                         entries.add(ModItems.DOOM_CHESTPLATE);
                         entries.add(ModItems.DOOM_LEGGINGS);
-                        entries.add(ModItems.DOOM_BOOTS);
                         entries.add(ModItems.DOOM_BOOTS);
                     }))
                     .build());

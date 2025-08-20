@@ -1,7 +1,6 @@
 package com.hxrdsxk.item;
 
 import com.hxrdsxk.AllINeedMod;
-import com.hxrdsxk.item.custom.BackpackItem;
 import com.hxrdsxk.item.custom.TotemOfDarknessItem;
 import com.hxrdsxk.item.custom.GrowthToggleItem;
 import com.hxrdsxk.item.custom.PinkGarnetSwordItem;

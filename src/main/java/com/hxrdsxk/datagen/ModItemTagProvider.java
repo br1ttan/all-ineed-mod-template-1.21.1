@@ -21,7 +21,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(ModItems.PINK_NETHERITE_CHESTPLATE)
                 .add(ModItems.PINK_NETHERITE_BOOTS);
 
-        getOrCreateTagBuilder(ItemTags.ARMOR_ENCHANTABLE)
+        getOrCreateTagBuilder(ItemTags.TRIMMABLE_ARMOR)
                 .add(ModItems.DOOM_HELMET)
                 .add(ModItems.DOOM_LEGGINGS)
                 .add(ModItems.DOOM_CHESTPLATE)
